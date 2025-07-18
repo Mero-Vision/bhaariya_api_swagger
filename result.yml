@@ -31,6 +31,10 @@ tags:
   - name: Admin > Category
   - name: Admin > Sub Category
   - name: Admin > Brand
+  - name: Customer
+  - name: Customer > Site Settings
+  - name: Customer > Category
+  - name: Customer > Brand
 paths:
   /api/admin/login:
     post:
@@ -589,6 +593,98 @@ paths:
             type: string
           example: application/json
         - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/site-settings:
+    get:
+      tags:
+        - Customer > Site Settings
+      summary: show site setting data
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/category:
+    get:
+      tags:
+        - Customer > Category
+      summary: show all category
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/category/{slug}:
+    get:
+      tags:
+        - Customer > Category
+      summary: show single category with products data
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/brand:
+    get:
+      tags:
+        - Customer > Brand
+      summary: show all brand list
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/brand/{slug}:
+    get:
+      tags:
+        - Customer > Brand
+      summary: show brand products
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: slug
           in: path
           schema:
             type: string
