@@ -1,8 +1,8 @@
 {
     "info": {
-        "title": "Skulix API Swagger",
+        "title": "Bhaariya API Swagger",
         "version": "1.0",
-        "description": "Skulix API documentation",
+        "description": "Bhaariya API documentation",
         "termsOfService": "#",
         "license": {
             "name": "MIT",
@@ -21,7 +21,7 @@
     },
     "servers": [
         {
-            "url": "https://api.skulix.com/",
+            "url": "https://api.bhaariya.com/",
             "description": "server"
         }
     ]
