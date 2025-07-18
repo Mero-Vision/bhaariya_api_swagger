@@ -1003,6 +1003,158 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Site Settings",
+					"item": [
+						{
+							"name": "show site setting data",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/site-settings",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"site-settings"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Category",
+					"item": [
+						{
+							"name": "show all category",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/category",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"category"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show single category with products data",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/category/{slug}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"category",
+										"{slug}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Brand",
+					"item": [
+						{
+							"name": "show all brand list",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/brand",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"brand"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show brand products",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/brand/{slug}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"brand",
+										"{slug}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
 		}
 	]
 }
