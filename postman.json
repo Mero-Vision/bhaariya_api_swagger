@@ -15,6 +15,20 @@
 					"item": [
 						{
 							"name": "login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const response = pm.response.json()\r",
+											"pm.environment.set('token', response.data.token)\r",
+											"pm.environment.set('refresh_token', response.data.refresh_token)"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -31,11 +45,6 @@
 									{
 										"key": "Accept",
 										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "school-id",
-										"value": "6",
 										"type": "text"
 									}
 								],
@@ -63,6 +72,929 @@
 										"api",
 										"admin",
 										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Site Settings",
+					"item": [
+						{
+							"name": "store site settings",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "website_title",
+											"value": "Cartyne",
+											"type": "text"
+										},
+										{
+											"key": "logo",
+											"type": "file",
+											"src": "/C:/Users/Hanci/Downloads/473363709_122171439998267814_1702870369622799843_n.jpg"
+										},
+										{
+											"key": "address",
+											"value": "KTM",
+											"type": "text"
+										},
+										{
+											"key": "contact_no",
+											"value": "9825915122",
+											"type": "text"
+										},
+										{
+											"key": "home_page_banner_1",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "home_page_banner_2",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "home_page_banner_3",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "privacy_policy",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "terms_conditions",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "facebook_link",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "instagram_link",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "tiktok_link",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "whatsapp_number",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "footer_background_color",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "footer_text_color",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "primary_nav_background_color",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "primary_nav_text_color",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "secondary_nav_background_color",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "secondary_nav_text_color",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "about_us",
+											"value": "hy",
+											"type": "text"
+										},
+										{
+											"key": "fav_icon",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/site-settings",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"site-settings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show site setting data",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/site-settings",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"site-settings"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "show authenticated user data",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/user/{id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"user",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "change password",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "current_password",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Password",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "Password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/change-password",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"change-password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "change customer profile image",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "profile_image",
+											"type": "file",
+											"src": "/C:/Users/Hanci/Downloads/Sukrat restaurant and lodge.png"
+										},
+										{
+											"key": "_method",
+											"value": "PUT",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/update-profile-image/{user_id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"update-profile-image",
+										"{user_id}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Category",
+					"item": [
+						{
+							"name": "store category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Drink",
+											"type": "text"
+										},
+										{
+											"key": "category_image",
+											"type": "file",
+											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 2.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/category",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"category"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show all category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/category?pagination_limit=5&search_keyword",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"category"
+									],
+									"query": [
+										{
+											"key": "pagination_limit",
+											"value": "5"
+										},
+										{
+											"key": "search_keyword",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/category/{id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"category",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Bag",
+											"type": "text"
+										},
+										{
+											"key": "category_image",
+											"type": "file",
+											"src": "/C:/Users/Hanci/Downloads/473363709_122171439998267814_1702870369622799843_n.jpg"
+										},
+										{
+											"key": "_method",
+											"value": "PUT",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/category/{id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"category",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Sub Category",
+					"item": [
+						{
+							"name": "store sub category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Drink",
+											"type": "text"
+										},
+										{
+											"key": "sub_category_image",
+											"type": "file",
+											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 9.jpg"
+										},
+										{
+											"key": "category_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/sub-category",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"sub-category"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show all sub category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/sub-category?pagination_limit=5&search_keyword",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"sub-category"
+									],
+									"query": [
+										{
+											"key": "pagination_limit",
+											"value": "5"
+										},
+										{
+											"key": "search_keyword",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete sub category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/sub-category/{id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"sub-category",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update sub category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Bag",
+											"type": "text"
+										},
+										{
+											"key": "category_image",
+											"type": "file",
+											"src": "/C:/Users/Hanci/Downloads/473363709_122171439998267814_1702870369622799843_n.jpg"
+										},
+										{
+											"key": "category_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "_method",
+											"value": "PUT",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/sub-category/{id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"sub-category",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Brand",
+					"item": [
+						{
+							"name": "store brand data",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Nike",
+											"type": "text"
+										},
+										{
+											"key": "brand_image",
+											"type": "file",
+											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 11.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/brand",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"brand"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show all brand list",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/brand?pagination_limit=8&search_keyword",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"brand"
+									],
+									"query": [
+										{
+											"key": "pagination_limit",
+											"value": "8"
+										},
+										{
+											"key": "search_keyword",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete brand",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/brand/{id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"brand",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update brand data",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "brand_image",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "_method",
+											"value": "PUT",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/brand/{id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"brand",
+										"{id}"
 									]
 								}
 							},
