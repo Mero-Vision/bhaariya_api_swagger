@@ -35,6 +35,8 @@ tags:
   - name: Customer > Site Settings
   - name: Customer > Category
   - name: Customer > Brand
+  - name: Vendor
+  - name: Vendor > Auth
 paths:
   /api/admin/login:
     post:
@@ -689,6 +691,65 @@ paths:
           schema:
             type: string
           required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vendor/signup:
+    post:
+      tags:
+        - Vendor > Auth
+      summary: signup vendor
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Hancie
+                email:
+                  type: string
+                  example: hanciephago@gmail.com
+                password:
+                  type: string
+                  example: Password
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vendor/login:
+    post:
+      tags:
+        - Vendor > Auth
+      summary: vendor login
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: hanciephago@gmail.com
+                password:
+                  type: string
+                  example: Password
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
       responses:
         '200':
           description: Successful response
