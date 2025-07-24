@@ -1155,6 +1155,101 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Vendor",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "signup vendor",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Hancie",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "hanciephago@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/vendor/signup",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vendor",
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "vendor login",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "hanciephago@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/vendor/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vendor",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
 		}
 	]
 }
