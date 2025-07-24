@@ -31,6 +31,7 @@ tags:
   - name: Admin > Category
   - name: Admin > Sub Category
   - name: Admin > Brand
+  - name: Admin > Products
   - name: Customer
   - name: Customer > Site Settings
   - name: Customer > Category
@@ -40,6 +41,7 @@ tags:
   - name: Vendor > Product
   - name: Vendor > Brand
   - name: Vendor > Category
+  - name: Vendor > Vendor
 paths:
   /api/admin/login:
     post:
@@ -607,6 +609,47 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/products:
+    get:
+      tags:
+        - Admin > Products
+      summary: show all products
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/products/{id}:
+    get:
+      tags:
+        - Admin > Products
+      summary: show single view product data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/site-settings:
     get:
       tags:
@@ -870,11 +913,94 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/vendor/products/6:
-    get:
+  /api/vendor/products/{id}:
+    post:
       tags:
         - Vendor > Product
-      summary: show single product data
+      summary: update product
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                category_id:
+                  type: integer
+                  example: '1'
+                sub_category_id:
+                  type: integer
+                  example: '1'
+                brand_id:
+                  type: integer
+                  example: '1'
+                vendor_id:
+                  type: integer
+                  example: '1'
+                name:
+                  type: string
+                  example: Organic Honey
+                description:
+                  type: string
+                  example: Raw organic honey from Himalayas
+                short_description:
+                  type: string
+                  example: 100% pure and organic
+                selling_price:
+                  type: integer
+                  example: '1000'
+                cross_price:
+                  type: integer
+                  example: '1500'
+                unit_price:
+                  type: integer
+                  example: '590'
+                stock_quantity:
+                  type: integer
+                  example: '200'
+                product_weight:
+                  type: string
+                  example: 500 gm
+                sku:
+                  type: string
+                  example: DSAFDSH
+                product_image[]:
+                  type: string
+                  format: binary
+                allow_negative_stock:
+                  type: boolean
+                  example: 'true'
+                varients[0][id]:
+                  type: integer
+                  example: '1'
+                varients[0][size]:
+                  type: string
+                  example: 500ml
+                varients[0][color]:
+                  type: string
+                varients[0][varient_selling_price]:
+                  type: number
+                  example: '12.99'
+                varients[0][varient_cross_price]:
+                  type: number
+                  example: '15.00'
+                varients[0][varient_unit_price]:
+                  type: number
+                  example: '11.99'
+                varients[0][varient_stock_quantity]:
+                  type: integer
+                  example: '25'
+                varients[0][varient_sku]:
+                  type: string
+                  example: HONEY50
+                varients[0][unit]:
+                  type: string
+                  example: ml
+                varients[0][images][]:
+                  type: string
+                  format: binary
+                _method:
+                  type: string
+                  example: PUT
       security:
         - bearerAuth: []
       parameters:
@@ -883,12 +1009,16 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/vendor/products/{id}:
     delete:
       tags:
         - Vendor > Product
@@ -906,6 +1036,24 @@ paths:
           schema:
             type: string
           required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vendor/products/6:
+    get:
+      tags:
+        - Vendor > Product
+      summary: show single product data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
       responses:
         '200':
           description: Successful response
@@ -942,6 +1090,29 @@ paths:
           schema:
             type: string
           example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vendor/user/{vendor_id}:
+    get:
+      tags:
+        - Vendor > Vendor
+      summary: show vendor data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: vendor_id
+          in: path
+          schema:
+            type: string
+          required: true
       responses:
         '200':
           description: Successful response
