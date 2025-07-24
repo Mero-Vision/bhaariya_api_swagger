@@ -37,6 +37,9 @@ tags:
   - name: Customer > Brand
   - name: Vendor
   - name: Vendor > Auth
+  - name: Vendor > Product
+  - name: Vendor > Brand
+  - name: Vendor > Category
 paths:
   /api/admin/login:
     post:
@@ -381,7 +384,7 @@ paths:
               properties:
                 name:
                   type: string
-                  example: Drink
+                  example: Beer
                 sub_category_image:
                   type: string
                   format: binary
@@ -744,6 +747,195 @@ paths:
                 password:
                   type: string
                   example: Password
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vendor/products:
+    post:
+      tags:
+        - Vendor > Product
+      summary: store product
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                category_id:
+                  type: integer
+                  example: '1'
+                sub_category_id:
+                  type: integer
+                  example: '1'
+                brand_id:
+                  type: integer
+                  example: '1'
+                vendor_id:
+                  type: integer
+                  example: '1'
+                name:
+                  type: string
+                  example: Organic Honey
+                description:
+                  type: string
+                  example: Raw organic honey from Himalayas
+                short_description:
+                  type: string
+                  example: 100% pure and organic
+                selling_price:
+                  type: integer
+                  example: '1000'
+                cross_price:
+                  type: integer
+                  example: '1500'
+                unit_price:
+                  type: integer
+                  example: '590'
+                stock_quantity:
+                  type: integer
+                  example: '200'
+                product_weight:
+                  type: string
+                  example: 500 gm
+                sku:
+                  type: string
+                  example: DSAFDSH
+                product_image[]:
+                  type: string
+                  format: binary
+                allow_negative_stock:
+                  type: boolean
+                  example: 'true'
+                varients[0][size]:
+                  type: string
+                  example: 500ml
+                varients[0][color]:
+                  type: string
+                varients[0][varient_selling_price]:
+                  type: number
+                  example: '12.99'
+                varients[0][varient_cross_price]:
+                  type: number
+                  example: '15.00'
+                varients[0][varient_unit_price]:
+                  type: number
+                  example: '11.99'
+                varients[0][varient_stock_quantity]:
+                  type: integer
+                  example: '25'
+                varients[0][varient_sku]:
+                  type: string
+                  example: HONEY50
+                varients[0][unit]:
+                  type: string
+                  example: ml
+                varients[0][images][]:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Vendor > Product
+      summary: show my products
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vendor/products/6:
+    get:
+      tags:
+        - Vendor > Product
+      summary: show single product data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vendor/products/{id}:
+    delete:
+      tags:
+        - Vendor > Product
+      summary: delete product
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vendor/brands:
+    get:
+      tags:
+        - Vendor > Brand
+      summary: show all brands
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vendor/category:
+    get:
+      tags:
+        - Vendor > Category
+      summary: show all category
+      security:
+        - bearerAuth: []
       parameters:
         - name: Accept
           in: header
