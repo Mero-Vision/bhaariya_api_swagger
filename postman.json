@@ -1001,6 +1001,82 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "Products",
+					"item": [
+						{
+							"name": "show all products",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show single view product data",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/products/{id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"products",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		},
@@ -1432,6 +1508,182 @@
 							"response": []
 						},
 						{
+							"name": "update product",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "category_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "sub_category_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "brand_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "vendor_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Organic Honey",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Raw organic honey from Himalayas",
+											"type": "text"
+										},
+										{
+											"key": "short_description",
+											"value": "100% pure and organic",
+											"type": "text"
+										},
+										{
+											"key": "selling_price",
+											"value": "1000",
+											"type": "text"
+										},
+										{
+											"key": "cross_price",
+											"value": "1500",
+											"type": "text"
+										},
+										{
+											"key": "unit_price",
+											"value": "590",
+											"type": "text"
+										},
+										{
+											"key": "stock_quantity",
+											"value": "200",
+											"type": "text"
+										},
+										{
+											"key": "product_weight",
+											"value": "500 gm",
+											"type": "text"
+										},
+										{
+											"key": "sku",
+											"value": "DSAFDSH",
+											"type": "text"
+										},
+										{
+											"key": "product_image[]",
+											"type": "file",
+											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 3.jpg"
+										},
+										{
+											"key": "allow_negative_stock",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "varients[0][id]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "varients[0][size]",
+											"value": "500ml",
+											"type": "text"
+										},
+										{
+											"key": "varients[0][color]",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "varients[0][varient_selling_price]",
+											"value": "12.99",
+											"type": "text"
+										},
+										{
+											"key": "varients[0][varient_cross_price]",
+											"value": "15.00",
+											"type": "text"
+										},
+										{
+											"key": "varients[0][varient_unit_price]",
+											"value": "11.99",
+											"type": "text"
+										},
+										{
+											"key": "varients[0][varient_stock_quantity]",
+											"value": "25",
+											"type": "text"
+										},
+										{
+											"key": "varients[0][varient_sku]",
+											"value": "HONEY50",
+											"type": "text"
+										},
+										{
+											"key": "varients[0][unit]",
+											"value": "ml",
+											"type": "text"
+										},
+										{
+											"key": "varients[0][images][]",
+											"type": "file",
+											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 1.jpg"
+										},
+										{
+											"key": "varients[0][images][]",
+											"type": "file",
+											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 2.jpg"
+										},
+										{
+											"key": "_method",
+											"value": "PUT",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/vendor/products/{id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vendor",
+										"products",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "show my products",
 							"request": {
 								"auth": {
@@ -1613,6 +1865,47 @@
 										"api",
 										"vendor",
 										"category"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Vendor",
+					"item": [
+						{
+							"name": "show vendor data",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/vendor/user/{vendor_id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vendor",
+										"user",
+										"{vendor_id}"
 									]
 								}
 							},
