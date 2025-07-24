@@ -637,13 +637,13 @@
 									"formdata": [
 										{
 											"key": "name",
-											"value": "Drink",
+											"value": "Beer",
 											"type": "text"
 										},
 										{
 											"key": "sub_category_image",
 											"type": "file",
-											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 9.jpg"
+											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 12.jpg"
 										},
 										{
 											"key": "category_id",
@@ -845,7 +845,7 @@
 										{
 											"key": "brand_image",
 											"type": "file",
-											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 11.jpg"
+											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 8.jpg"
 										}
 									]
 								},
@@ -1209,6 +1209,20 @@
 						},
 						{
 							"name": "vendor login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const response = pm.response.json()\r",
+											"pm.environment.set('token', response.data.access_token)\r",
+											"pm.environment.set('refresh_token', response.data.refresh_token)"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"request": {
 								"method": "POST",
 								"header": [
@@ -1242,6 +1256,363 @@
 										"api",
 										"vendor",
 										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Product",
+					"item": [
+						{
+							"name": "store product",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "category_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "sub_category_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "brand_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "vendor_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Organic Honey",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Raw organic honey from Himalayas",
+											"type": "text"
+										},
+										{
+											"key": "short_description",
+											"value": "100% pure and organic",
+											"type": "text"
+										},
+										{
+											"key": "selling_price",
+											"value": "1000",
+											"type": "text"
+										},
+										{
+											"key": "cross_price",
+											"value": "1500",
+											"type": "text"
+										},
+										{
+											"key": "unit_price",
+											"value": "590",
+											"type": "text"
+										},
+										{
+											"key": "stock_quantity",
+											"value": "200",
+											"type": "text"
+										},
+										{
+											"key": "product_weight",
+											"value": "500 gm",
+											"type": "text"
+										},
+										{
+											"key": "sku",
+											"value": "DSAFDSH",
+											"type": "text"
+										},
+										{
+											"key": "product_image[]",
+											"type": "file",
+											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 3.jpg"
+										},
+										{
+											"key": "allow_negative_stock",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "varients[0][size]",
+											"value": "500ml",
+											"type": "text"
+										},
+										{
+											"key": "varients[0][color]",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "varients[0][varient_selling_price]",
+											"value": "12.99",
+											"type": "text"
+										},
+										{
+											"key": "varients[0][varient_cross_price]",
+											"value": "15.00",
+											"type": "text"
+										},
+										{
+											"key": "varients[0][varient_unit_price]",
+											"value": "11.99",
+											"type": "text"
+										},
+										{
+											"key": "varients[0][varient_stock_quantity]",
+											"value": "25",
+											"type": "text"
+										},
+										{
+											"key": "varients[0][varient_sku]",
+											"value": "HONEY50",
+											"type": "text"
+										},
+										{
+											"key": "varients[0][unit]",
+											"value": "ml",
+											"type": "text"
+										},
+										{
+											"key": "varients[0][images][]",
+											"type": "file",
+											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 1.jpg"
+										},
+										{
+											"key": "varients[0][images][]",
+											"type": "file",
+											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 2.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/vendor/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vendor",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show my products",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/vendor/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vendor",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show single product data",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/vendor/products/6",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vendor",
+										"products",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete product",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/vendor/products/{id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vendor",
+										"products",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Brand",
+					"item": [
+						{
+							"name": "show all brands",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/vendor/brands",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vendor",
+										"brands"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Category",
+					"item": [
+						{
+							"name": "show all category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/vendor/category",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vendor",
+										"category"
 									]
 								}
 							},
