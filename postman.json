@@ -1289,6 +1289,80 @@
 					]
 				},
 				{
+					"name": "Sub Category",
+					"item": [
+						{
+							"name": "show sub category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/sub-category",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"sub-category"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show single sub category data",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/sub-category/{slug}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"sub-category",
+										"{slug}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "Brand",
 					"item": [
 						{
@@ -2195,7 +2269,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"shipping_detail_id\": \"1\",\r\n    \"subtotal\": \"200\",\r\n    \"delivery_charge\": \"200\",\r\n    \"discount\": \"200\",\r\n    \"tax\": \"200\",\r\n    \"total_amount\": \"200\",\r\n    \"note\": \"hy\",\r\n    \"order_items\": [\r\n        {\r\n            \"product_id\": \"8\",\r\n            \"product_varient_id\": \"7\",\r\n            \"quantity\": \"2\",\r\n            \"price\": \"2\",\r\n            \"subtotal\": \"2\"\r\n        }\r\n    ]\r\n}",
+									"raw": "{\r\n    \"shipping_detail_id\": \"1\",\r\n    \"vendor_id\": \"1\",\r\n    \"subtotal\": \"200\",\r\n    \"delivery_charge\": \"200\",\r\n    \"discount\": \"200\",\r\n    \"tax\": \"200\",\r\n    \"total_amount\": \"200\",\r\n    \"note\": \"hy\",\r\n    \"order_items\": [\r\n        {\r\n            \"product_id\": \"8\",\r\n            \"product_varient_id\": \"7\",\r\n            \"quantity\": \"2\",\r\n            \"price\": \"2\",\r\n            \"subtotal\": \"2\"\r\n        }\r\n    ]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
