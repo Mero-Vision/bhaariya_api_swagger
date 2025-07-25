@@ -1084,6 +1084,128 @@
 			"name": "Customer",
 			"item": [
 				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "customer login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const response = pm.response.json()\r",
+											"pm.environment.set('token', response.data.access_token)\r",
+											"pm.environment.set('refresh_token', response.data.refresh_token)"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "hello@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "signup customer",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Hello",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "hello@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/signup",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"signup"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "Site Settings",
 					"item": [
 						{
@@ -1227,6 +1349,964 @@
 								}
 							},
 							"response": []
+						}
+					]
+				},
+				{
+					"name": "Products",
+					"item": [
+						{
+							"name": "show all products",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show single view product data",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/products/{id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"products",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Customer",
+					"item": [
+						{
+							"name": "show customer details",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/customer/{customer_id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"customer",
+										"{customer_id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "change customer profile image",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "profile_image",
+											"type": "file",
+											"src": "/C:/Users/Hanci/Downloads/Sukrat restaurant and lodge.png"
+										},
+										{
+											"key": "_method",
+											"value": "PUT",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/customer/update-profile-image/{customer_id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"customer",
+										"update-profile-image",
+										"{customer_id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update customer name",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Hancie Phago",
+											"type": "text"
+										},
+										{
+											"key": "_method",
+											"value": "PUT",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/customer/{customer_name}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"customer",
+										"{customer_name}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "change password",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "current_password",
+											"value": "Password",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Password2",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "Password2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/customer/change-password",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"customer",
+										"change-password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "verify customer account",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "token",
+											"value": "dsfdgdfgfdhfgh",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/verify-account",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"verify-account"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Shipping Details",
+					"item": [
+						{
+							"name": "store shipping details",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "recipient_name",
+											"value": "John Doe",
+											"type": "text"
+										},
+										{
+											"key": "contact_no",
+											"value": "+1-555-123-4567",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "john.doe@example.com",
+											"type": "text"
+										},
+										{
+											"key": "street_address",
+											"value": "123 Main St",
+											"type": "text"
+										},
+										{
+											"key": "apartment_suite",
+											"value": "Apt 4B",
+											"type": "text"
+										},
+										{
+											"key": "city",
+											"value": "Los Angeles",
+											"type": "text"
+										},
+										{
+											"key": "state",
+											"value": "CA",
+											"type": "text"
+										},
+										{
+											"key": "zip_code",
+											"value": "90001",
+											"type": "text"
+										},
+										{
+											"key": "landmark",
+											"value": "Near Central Park",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/shipping-details",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"shipping-details"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show all shipping details",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/shipping-details",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"shipping-details"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show single shipping details",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/shipping-details/{id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"shipping-details",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete shipping details",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/shipping-details/{id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"shipping-details",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update shipping detail status",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "status",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "_method",
+											"value": "PUT",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/shipping-details/update-status/{id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"shipping-details",
+										"update-status",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update shipping details",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "recipient_name",
+											"value": "John Doe",
+											"type": "text"
+										},
+										{
+											"key": "contact_no",
+											"value": "+1-555-123-4567",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "john.doe@example.com",
+											"type": "text"
+										},
+										{
+											"key": "street_address",
+											"value": "123 Main St",
+											"type": "text"
+										},
+										{
+											"key": "apartment_suite",
+											"value": "Apt 4B",
+											"type": "text"
+										},
+										{
+											"key": "city",
+											"value": "Los Angeles",
+											"type": "text"
+										},
+										{
+											"key": "state",
+											"value": "CA",
+											"type": "text"
+										},
+										{
+											"key": "zip_code",
+											"value": "90001",
+											"type": "text"
+										},
+										{
+											"key": "landmark",
+											"value": "Near Central Park",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/shipping-details/{id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"shipping-details",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Cart",
+					"item": [
+						{
+							"name": "store cart details",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "product_id",
+											"value": "8",
+											"type": "text"
+										},
+										{
+											"key": "product_varient_id",
+											"value": "7",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "300",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/carts",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"carts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show all carts",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/carts",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"carts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete cart",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/carts/{id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"carts",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update cart quantity",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "quantity",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "_method",
+											"value": "PUT",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/carts/quantity-update/{cart_id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"carts",
+										"quantity-update",
+										"{cart_id}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Order",
+					"item": [
+						{
+							"name": "store order",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"shipping_detail_id\": \"1\",\r\n    \"subtotal\": \"200\",\r\n    \"delivery_charge\": \"200\",\r\n    \"discount\": \"200\",\r\n    \"tax\": \"200\",\r\n    \"total_amount\": \"200\",\r\n    \"note\": \"hy\",\r\n    \"order_items\": [\r\n        {\r\n            \"product_id\": \"8\",\r\n            \"product_varient_id\": \"7\",\r\n            \"quantity\": \"2\",\r\n            \"price\": \"2\",\r\n            \"subtotal\": \"2\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/orders",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show all orders",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/orders",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"orders"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "show all orders",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/api/orders",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"orders"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 04 Feb 2025 12:05:33 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"id\": 3,\n            \"user_id\": 1,\n            \"order_number\": \"ORD2025020402\",\n            \"shipping_detail_id\": 1,\n            \"subtotal\": \"200.00\",\n            \"delivery_charge\": \"200.00\",\n            \"discount\": \"200.00\",\n            \"tax\": \"200.00\",\n            \"total_amount\": \"200.00\",\n            \"note\": \"hy\",\n            \"customer\": {\n                \"id\": 1,\n                \"name\": \"Admin\",\n                \"email\": \"info@cartyne.com\",\n                \"email_verified_at\": \"2025-01-30T18:21:25.000000Z\",\n                \"roles\": [\n                    \"admin\"\n                ],\n                \"created_at\": \"2025-01-30 06:21 pm\",\n                \"updated_at\": \"2025-01-30 06:21 pm\"\n            },\n            \"shipping_details\": null,\n            \"order_items\": [\n                {\n                    \"id\": 2,\n                    \"user_id\": 1,\n                    \"order_id\": 3,\n                    \"product_id\": 2,\n                    \"product_variant_id\": null,\n                    \"quantity\": 2,\n                    \"price\": \"2.00\",\n                    \"subtotal\": \"4.00\",\n                    \"product\": {\n                        \"id\": 2,\n                        \"category_id\": 1,\n                        \"brand_id\": 1,\n                        \"name\": \"Mobile\",\n                        \"slug\": \"mobile\",\n                        \"description\": \"dfdgfg\",\n                        \"selling_price\": \"200.00\",\n                        \"cross_price\": \"300.00\",\n                        \"unit_price\": \"100.00\",\n                        \"stock_quantity\": \"500.00\",\n                        \"sku\": \"DGFT56\",\n                        \"allow_negative_stock\": 1,\n                        \"has_varient\": 1,\n                        \"product_weight\": null,\n                        \"status\": \"active\",\n                        \"created_at\": \"2025-02-01T14:24:14.000000Z\",\n                        \"updated_at\": \"2025-02-01T14:24:14.000000Z\",\n                        \"product_images\": [\n                            {\n                                \"id\": 3,\n                                \"product_image\": \"http://localhost:8000/storage/4/how-ot-make-picture-black-and-white-after.jpg\"\n                            }\n                        ]\n                    },\n                    \"product_varient\": {\n                        \"id\": 2,\n                        \"product_id\": 2,\n                        \"size\": \"XXL\",\n                        \"color\": \"RED\",\n                        \"selling_price\": \"200.00\",\n                        \"cross_price\": \"300.00\",\n                        \"unit_price\": \"100.00\",\n                        \"stock_quantity\": \"500.00\",\n                        \"sku\": \"GFG67\",\n                        \"created_at\": \"2025-02-01T14:24:14.000000Z\",\n                        \"updated_at\": \"2025-02-01T14:24:14.000000Z\",\n                        \"product_varient_images\": [\n                            {\n                                \"id\": 2,\n                                \"product_image\": \"http://localhost:8000/storage/3/how-ot-make-picture-black-and-white-after.jpg\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        },\n        {\n            \"id\": 1,\n            \"user_id\": 1,\n            \"order_number\": \"ORD2025020401\",\n            \"shipping_detail_id\": 1,\n            \"subtotal\": \"200.00\",\n            \"delivery_charge\": \"200.00\",\n            \"discount\": \"200.00\",\n            \"tax\": \"200.00\",\n            \"total_amount\": \"200.00\",\n            \"note\": \"hy\",\n            \"customer\": {\n                \"id\": 1,\n                \"name\": \"Admin\",\n                \"email\": \"info@cartyne.com\",\n                \"email_verified_at\": \"2025-01-30T18:21:25.000000Z\",\n                \"roles\": [\n                    \"admin\"\n                ],\n                \"created_at\": \"2025-01-30 06:21 pm\",\n                \"updated_at\": \"2025-01-30 06:21 pm\"\n            },\n            \"shipping_details\": null,\n            \"order_items\": [\n                {\n                    \"id\": 1,\n                    \"user_id\": 1,\n                    \"order_id\": 1,\n                    \"product_id\": 2,\n                    \"product_variant_id\": null,\n                    \"quantity\": 2,\n                    \"price\": \"2.00\",\n                    \"subtotal\": \"4.00\",\n                    \"product\": {\n                        \"id\": 2,\n                        \"category_id\": 1,\n                        \"brand_id\": 1,\n                        \"name\": \"Mobile\",\n                        \"slug\": \"mobile\",\n                        \"description\": \"dfdgfg\",\n                        \"selling_price\": \"200.00\",\n                        \"cross_price\": \"300.00\",\n                        \"unit_price\": \"100.00\",\n                        \"stock_quantity\": \"500.00\",\n                        \"sku\": \"DGFT56\",\n                        \"allow_negative_stock\": 1,\n                        \"has_varient\": 1,\n                        \"product_weight\": null,\n                        \"status\": \"active\",\n                        \"created_at\": \"2025-02-01T14:24:14.000000Z\",\n                        \"updated_at\": \"2025-02-01T14:24:14.000000Z\",\n                        \"product_images\": [\n                            {\n                                \"id\": 3,\n                                \"product_image\": \"http://localhost:8000/storage/4/how-ot-make-picture-black-and-white-after.jpg\"\n                            }\n                        ]\n                    },\n                    \"product_varient\": null\n                }\n            ]\n        }\n    ]\n}"
+								}
+							]
 						}
 					]
 				}
