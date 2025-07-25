@@ -451,7 +451,7 @@
 										{
 											"key": "category_image",
 											"type": "file",
-											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 2.jpg"
+											"src": "/C:/Users/user/Pictures/115-1152580_related-image-hot-drinks-png.png"
 										}
 									]
 								},
@@ -643,7 +643,7 @@
 										{
 											"key": "sub_category_image",
 											"type": "file",
-											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 12.jpg"
+											"src": "/C:/Users/user/Pictures/Alcohol-PNG-Pic.png"
 										},
 										{
 											"key": "category_id",
@@ -3065,6 +3065,127 @@
 										"vendor",
 										"user",
 										"{vendor_id}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Vendor Store",
+					"item": [
+						{
+							"name": "update vendor data",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Bigmart",
+											"type": "text"
+										},
+										{
+											"key": "owner_name",
+											"value": "Hello",
+											"type": "text"
+										},
+										{
+											"key": "ein",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "phone_number",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "address",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "city",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "state",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "zip_code",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "website",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "sales_tax_id",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "opening_time",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "closing_time",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "store_logo",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "_method",
+											"value": "PUT",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/vendor/update-store/{id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vendor",
+										"update-store",
+										"{id}"
 									]
 								}
 							},
