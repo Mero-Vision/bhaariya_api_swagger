@@ -33,9 +33,15 @@ tags:
   - name: Admin > Brand
   - name: Admin > Products
   - name: Customer
+  - name: Customer > Auth
   - name: Customer > Site Settings
   - name: Customer > Category
   - name: Customer > Brand
+  - name: Customer > Products
+  - name: Customer > Customer
+  - name: Customer > Shipping Details
+  - name: Customer > Cart
+  - name: Customer > Order
   - name: Vendor
   - name: Vendor > Auth
   - name: Vendor > Product
@@ -650,6 +656,69 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/login:
+    post:
+      tags:
+        - Customer > Auth
+      summary: customer login
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: hello@gmail.com
+                password:
+                  type: string
+                  example: Password
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/signup:
+    post:
+      tags:
+        - Customer > Auth
+      summary: signup customer
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Hello
+                email:
+                  type: string
+                  example: hello@gmail.com
+                password:
+                  type: string
+                  example: Password
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/site-settings:
     get:
       tags:
@@ -742,6 +811,718 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/products:
+    get:
+      tags:
+        - Customer > Products
+      summary: show all products
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/products/{id}:
+    get:
+      tags:
+        - Customer > Products
+      summary: show single view product data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer/{customer_id}:
+    get:
+      tags:
+        - Customer > Customer
+      summary: show customer details
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: customer_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer/update-profile-image/{customer_id}:
+    post:
+      tags:
+        - Customer > Customer
+      summary: change customer profile image
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                profile_image:
+                  type: string
+                  format: binary
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: customer_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer/{customer_name}:
+    post:
+      tags:
+        - Customer > Customer
+      summary: update customer name
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Hancie Phago
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: customer_name
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer/change-password:
+    post:
+      tags:
+        - Customer > Customer
+      summary: change password
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                current_password:
+                  type: string
+                  example: Password
+                password:
+                  type: string
+                  example: Password2
+                password_confirmation:
+                  type: string
+                  example: Password2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/verify-account:
+    post:
+      tags:
+        - Customer > Customer
+      summary: verify customer account
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  example: dsfdgdfgfdhfgh
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/shipping-details:
+    post:
+      tags:
+        - Customer > Shipping Details
+      summary: store shipping details
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                recipient_name:
+                  type: string
+                  example: John Doe
+                contact_no:
+                  type: string
+                  example: +1-555-123-4567
+                email:
+                  type: string
+                  example: john.doe@example.com
+                street_address:
+                  type: string
+                  example: 123 Main St
+                apartment_suite:
+                  type: string
+                  example: Apt 4B
+                city:
+                  type: string
+                  example: Los Angeles
+                state:
+                  type: string
+                  example: CA
+                zip_code:
+                  type: integer
+                  example: '90001'
+                landmark:
+                  type: string
+                  example: Near Central Park
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Customer > Shipping Details
+      summary: show all shipping details
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/shipping-details/{id}:
+    get:
+      tags:
+        - Customer > Shipping Details
+      summary: show single shipping details
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Customer > Shipping Details
+      summary: delete shipping details
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Customer > Shipping Details
+      summary: update shipping details
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                recipient_name:
+                  type: string
+                  example: John Doe
+                contact_no:
+                  type: string
+                  example: +1-555-123-4567
+                email:
+                  type: string
+                  example: john.doe@example.com
+                street_address:
+                  type: string
+                  example: 123 Main St
+                apartment_suite:
+                  type: string
+                  example: Apt 4B
+                city:
+                  type: string
+                  example: Los Angeles
+                state:
+                  type: string
+                  example: CA
+                zip_code:
+                  type: integer
+                  example: '90001'
+                landmark:
+                  type: string
+                  example: Near Central Park
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/shipping-details/update-status/{id}:
+    post:
+      tags:
+        - Customer > Shipping Details
+      summary: update shipping detail status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: boolean
+                  example: 'true'
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/carts:
+    post:
+      tags:
+        - Customer > Cart
+      summary: store cart details
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                product_id:
+                  type: integer
+                  example: '8'
+                product_varient_id:
+                  type: integer
+                  example: '7'
+                quantity:
+                  type: integer
+                  example: '5'
+                price:
+                  type: integer
+                  example: '300'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Customer > Cart
+      summary: show all carts
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/carts/{id}:
+    delete:
+      tags:
+        - Customer > Cart
+      summary: delete cart
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/carts/quantity-update/{cart_id}:
+    post:
+      tags:
+        - Customer > Cart
+      summary: update cart quantity
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                quantity:
+                  type: integer
+                  example: '5'
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: cart_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/orders:
+    post:
+      tags:
+        - Customer > Order
+      summary: store order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                shipping_detail_id: '1'
+                subtotal: '200'
+                delivery_charge: '200'
+                discount: '200'
+                tax: '200'
+                total_amount: '200'
+                note: hy
+                order_items:
+                  - product_id: '8'
+                    product_varient_id: '7'
+                    quantity: '2'
+                    price: '2'
+                    subtotal: '2'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Customer > Order
+      summary: show all orders
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Tue, 04 Feb 2025 12:05:33 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                data:
+                  - id: 3
+                    user_id: 1
+                    order_number: ORD2025020402
+                    shipping_detail_id: 1
+                    subtotal: '200.00'
+                    delivery_charge: '200.00'
+                    discount: '200.00'
+                    tax: '200.00'
+                    total_amount: '200.00'
+                    note: hy
+                    customer:
+                      id: 1
+                      name: Admin
+                      email: info@cartyne.com
+                      email_verified_at: '2025-01-30T18:21:25.000000Z'
+                      roles:
+                        - admin
+                      created_at: 2025-01-30 06:21 pm
+                      updated_at: 2025-01-30 06:21 pm
+                    shipping_details: null
+                    order_items:
+                      - id: 2
+                        user_id: 1
+                        order_id: 3
+                        product_id: 2
+                        product_variant_id: null
+                        quantity: 2
+                        price: '2.00'
+                        subtotal: '4.00'
+                        product:
+                          id: 2
+                          category_id: 1
+                          brand_id: 1
+                          name: Mobile
+                          slug: mobile
+                          description: dfdgfg
+                          selling_price: '200.00'
+                          cross_price: '300.00'
+                          unit_price: '100.00'
+                          stock_quantity: '500.00'
+                          sku: DGFT56
+                          allow_negative_stock: 1
+                          has_varient: 1
+                          product_weight: null
+                          status: active
+                          created_at: '2025-02-01T14:24:14.000000Z'
+                          updated_at: '2025-02-01T14:24:14.000000Z'
+                          product_images:
+                            - id: 3
+                              product_image: >-
+                                http://localhost:8000/storage/4/how-ot-make-picture-black-and-white-after.jpg
+                        product_varient:
+                          id: 2
+                          product_id: 2
+                          size: XXL
+                          color: RED
+                          selling_price: '200.00'
+                          cross_price: '300.00'
+                          unit_price: '100.00'
+                          stock_quantity: '500.00'
+                          sku: GFG67
+                          created_at: '2025-02-01T14:24:14.000000Z'
+                          updated_at: '2025-02-01T14:24:14.000000Z'
+                          product_varient_images:
+                            - id: 2
+                              product_image: >-
+                                http://localhost:8000/storage/3/how-ot-make-picture-black-and-white-after.jpg
+                  - id: 1
+                    user_id: 1
+                    order_number: ORD2025020401
+                    shipping_detail_id: 1
+                    subtotal: '200.00'
+                    delivery_charge: '200.00'
+                    discount: '200.00'
+                    tax: '200.00'
+                    total_amount: '200.00'
+                    note: hy
+                    customer:
+                      id: 1
+                      name: Admin
+                      email: info@cartyne.com
+                      email_verified_at: '2025-01-30T18:21:25.000000Z'
+                      roles:
+                        - admin
+                      created_at: 2025-01-30 06:21 pm
+                      updated_at: 2025-01-30 06:21 pm
+                    shipping_details: null
+                    order_items:
+                      - id: 1
+                        user_id: 1
+                        order_id: 1
+                        product_id: 2
+                        product_variant_id: null
+                        quantity: 2
+                        price: '2.00'
+                        subtotal: '4.00'
+                        product:
+                          id: 2
+                          category_id: 1
+                          brand_id: 1
+                          name: Mobile
+                          slug: mobile
+                          description: dfdgfg
+                          selling_price: '200.00'
+                          cross_price: '300.00'
+                          unit_price: '100.00'
+                          stock_quantity: '500.00'
+                          sku: DGFT56
+                          allow_negative_stock: 1
+                          has_varient: 1
+                          product_weight: null
+                          status: active
+                          created_at: '2025-02-01T14:24:14.000000Z'
+                          updated_at: '2025-02-01T14:24:14.000000Z'
+                          product_images:
+                            - id: 3
+                              product_image: >-
+                                http://localhost:8000/storage/4/how-ot-make-picture-black-and-white-after.jpg
+                        product_varient: null
   /api/vendor/signup:
     post:
       tags:
