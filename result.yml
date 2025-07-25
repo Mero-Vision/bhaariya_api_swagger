@@ -36,6 +36,7 @@ tags:
   - name: Customer > Auth
   - name: Customer > Site Settings
   - name: Customer > Category
+  - name: Customer > Sub Category
   - name: Customer > Brand
   - name: Customer > Products
   - name: Customer > Customer
@@ -772,6 +773,47 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/sub-category:
+    get:
+      tags:
+        - Customer > Sub Category
+      summary: show sub category
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sub-category/{slug}:
+    get:
+      tags:
+        - Customer > Sub Category
+      summary: show single sub category data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/brand:
     get:
       tags:
@@ -1329,6 +1371,7 @@ paths:
               type: object
               example:
                 shipping_detail_id: '1'
+                vendor_id: '1'
                 subtotal: '200'
                 delivery_charge: '200'
                 discount: '200'
@@ -1534,6 +1577,9 @@ paths:
             schema:
               type: object
               properties:
+                store_name:
+                  type: string
+                  example: Bigmart
                 name:
                   type: string
                   example: Hancie
