@@ -2407,6 +2407,11 @@
 									"mode": "formdata",
 									"formdata": [
 										{
+											"key": "store_name",
+											"value": "Bigmart",
+											"type": "text"
+										},
+										{
 											"key": "name",
 											"value": "Hancie",
 											"type": "text"
