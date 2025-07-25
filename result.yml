@@ -49,6 +49,7 @@ tags:
   - name: Vendor > Brand
   - name: Vendor > Category
   - name: Vendor > Vendor
+  - name: Vendor > Vendor Store
 paths:
   /api/admin/login:
     post:
@@ -1936,6 +1937,69 @@ paths:
             type: string
           example: application/json
         - name: vendor_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vendor/update-store/{id}:
+    post:
+      tags:
+        - Vendor > Vendor Store
+      summary: update vendor data
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Bigmart
+                owner_name:
+                  type: string
+                  example: Hello
+                ein:
+                  type: string
+                phone_number:
+                  type: string
+                email:
+                  type: string
+                address:
+                  type: string
+                city:
+                  type: string
+                state:
+                  type: string
+                zip_code:
+                  type: string
+                website:
+                  type: string
+                sales_tax_id:
+                  type: string
+                opening_time:
+                  type: string
+                closing_time:
+                  type: string
+                store_logo:
+                  type: string
+                  format: binary
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
           in: path
           schema:
             type: string
