@@ -451,7 +451,7 @@
 										{
 											"key": "category_image",
 											"type": "file",
-											"src": "/C:/Users/user/Pictures/115-1152580_related-image-hot-drinks-png.png"
+											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 2.jpg"
 										}
 									]
 								},
@@ -643,7 +643,7 @@
 										{
 											"key": "sub_category_image",
 											"type": "file",
-											"src": "/C:/Users/user/Pictures/Alcohol-PNG-Pic.png"
+											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 4.jpg"
 										},
 										{
 											"key": "category_id",
@@ -845,7 +845,7 @@
 										{
 											"key": "brand_image",
 											"type": "file",
-											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 8.jpg"
+											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 14.jpg"
 										}
 									]
 								},
@@ -1070,6 +1070,461 @@
 										"api",
 										"admin",
 										"products",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update product status",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "status",
+											"value": "active",
+											"type": "text"
+										},
+										{
+											"key": "_method",
+											"value": "PUT",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/vendor/product-update-status/{product_id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vendor",
+										"product-update-status",
+										"{product_id}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Vendor",
+					"item": [
+						{
+							"name": "show all vendor list",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/vendors?pagination_limit=8&search_keyword",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"vendors"
+									],
+									"query": [
+										{
+											"key": "pagination_limit",
+											"value": "8"
+										},
+										{
+											"key": "search_keyword",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show single vendor data",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/vendors/{id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"vendors",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Contact Us",
+					"item": [
+						{
+							"name": "show all contact us list",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/contact-us?pagination_limit=8&search_keyword",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"contact-us"
+									],
+									"query": [
+										{
+											"key": "pagination_limit",
+											"value": "8"
+										},
+										{
+											"key": "search_keyword",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete contact us",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/contact-us/{id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"contact-us",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "News Letter",
+					"item": [
+						{
+							"name": "show all news letter",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/newsletters",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"newsletters"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "FAQ",
+					"item": [
+						{
+							"name": "store faq data",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "question",
+											"value": "hy",
+											"type": "text"
+										},
+										{
+											"key": "answer",
+											"value": "hy",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/faqs",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"faqs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show all faq",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/faqs?pagination_limit&search_keyword",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"faqs"
+									],
+									"query": [
+										{
+											"key": "pagination_limit",
+											"value": null
+										},
+										{
+											"key": "search_keyword",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete faq",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/faqs/{id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"faqs",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update faq",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "question",
+											"value": "hello",
+											"type": "text"
+										},
+										{
+											"key": "answer",
+											"value": "hello",
+											"type": "text"
+										},
+										{
+											"key": "_method",
+											"value": "PUT",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/faqs/{id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"faqs",
 										"{id}"
 									]
 								}
@@ -2383,6 +2838,227 @@
 							]
 						}
 					]
+				},
+				{
+					"name": "Vendor Store",
+					"item": [
+						{
+							"name": "show all vendor stores",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/vendor-stores",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vendor-stores"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show single vendor store data",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/vendor-stores/{slug}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vendor-stores",
+										"{slug}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Contact Us",
+					"item": [
+						{
+							"name": "store contact us",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "hy",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "hy@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "mobile_no",
+											"value": "45466",
+											"type": "text"
+										},
+										{
+											"key": "subject",
+											"value": "Hello",
+											"type": "text"
+										},
+										{
+											"key": "message",
+											"value": "Hy",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/contact-us",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"contact-us"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "News Letter",
+					"item": [
+						{
+							"name": "store news letter",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "hy@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/newsletter",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"newsletter"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Faq",
+					"item": [
+						{
+							"name": "show all faq",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/faqs",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"faqs"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		},
@@ -2541,7 +3217,7 @@
 											"type": "text"
 										},
 										{
-											"key": "vendor_id",
+											"key": "vendor_store_id",
 											"value": "1",
 											"type": "text"
 										},
@@ -2593,7 +3269,7 @@
 										{
 											"key": "product_image[]",
 											"type": "file",
-											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 3.jpg"
+											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 10.jpg"
 										},
 										{
 											"key": "allow_negative_stock",
@@ -2643,12 +3319,12 @@
 										{
 											"key": "varients[0][images][]",
 											"type": "file",
-											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 1.jpg"
+											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 12.jpg"
 										},
 										{
 											"key": "varients[0][images][]",
 											"type": "file",
-											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 2.jpg"
+											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 11.jpg"
 										}
 									]
 								},
