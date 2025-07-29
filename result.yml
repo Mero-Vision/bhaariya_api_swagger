@@ -32,6 +32,10 @@ tags:
   - name: Admin > Sub Category
   - name: Admin > Brand
   - name: Admin > Products
+  - name: Admin > Vendor
+  - name: Admin > Contact Us
+  - name: Admin > News Letter
+  - name: Admin > FAQ
   - name: Customer
   - name: Customer > Auth
   - name: Customer > Site Settings
@@ -43,6 +47,10 @@ tags:
   - name: Customer > Shipping Details
   - name: Customer > Cart
   - name: Customer > Order
+  - name: Customer > Vendor Store
+  - name: Customer > Contact Us
+  - name: Customer > News Letter
+  - name: Customer > Faq
   - name: Vendor
   - name: Vendor > Auth
   - name: Vendor > Product
@@ -640,6 +648,274 @@ paths:
       tags:
         - Admin > Products
       summary: show single view product data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vendor/product-update-status/{product_id}:
+    post:
+      tags:
+        - Admin > Products
+      summary: update product status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: active
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: product_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/vendors:
+    get:
+      tags:
+        - Admin > Vendor
+      summary: show all vendor list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: pagination_limit
+          in: query
+          schema:
+            type: integer
+          example: '8'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/vendors/{id}:
+    get:
+      tags:
+        - Admin > Vendor
+      summary: show single vendor data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/contact-us:
+    get:
+      tags:
+        - Admin > Contact Us
+      summary: show all contact us list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: pagination_limit
+          in: query
+          schema:
+            type: integer
+          example: '8'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/contact-us/{id}:
+    delete:
+      tags:
+        - Admin > Contact Us
+      summary: delete contact us
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/newsletters:
+    get:
+      tags:
+        - Admin > News Letter
+      summary: show all news letter
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/faqs:
+    post:
+      tags:
+        - Admin > FAQ
+      summary: store faq data
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                question:
+                  type: string
+                  example: hy
+                answer:
+                  type: string
+                  example: hy
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > FAQ
+      summary: show all faq
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: pagination_limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/faqs/{id}:
+    delete:
+      tags:
+        - Admin > FAQ
+      summary: delete faq
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Admin > FAQ
+      summary: update faq
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                question:
+                  type: string
+                  example: hello
+                answer:
+                  type: string
+                  example: hello
+                _method:
+                  type: string
+                  example: PUT
       security:
         - bearerAuth: []
       parameters:
@@ -1567,6 +1843,129 @@ paths:
                               product_image: >-
                                 http://localhost:8000/storage/4/how-ot-make-picture-black-and-white-after.jpg
                         product_varient: null
+  /api/vendor-stores:
+    get:
+      tags:
+        - Customer > Vendor Store
+      summary: show all vendor stores
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vendor-stores/{slug}:
+    get:
+      tags:
+        - Customer > Vendor Store
+      summary: show single vendor store data
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/contact-us:
+    post:
+      tags:
+        - Customer > Contact Us
+      summary: store contact us
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: hy
+                email:
+                  type: string
+                  example: hy@gmail.com
+                mobile_no:
+                  type: integer
+                  example: '45466'
+                subject:
+                  type: string
+                  example: Hello
+                message:
+                  type: string
+                  example: Hy
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/newsletter:
+    post:
+      tags:
+        - Customer > News Letter
+      summary: store news letter
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: hy@gmail.com
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/faqs:
+    get:
+      tags:
+        - Customer > Faq
+      summary: show all faq
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/vendor/signup:
     post:
       tags:
@@ -1649,7 +2048,7 @@ paths:
                 brand_id:
                   type: integer
                   example: '1'
-                vendor_id:
+                vendor_store_id:
                   type: integer
                   example: '1'
                 name:
