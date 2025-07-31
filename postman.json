@@ -1212,6 +1212,99 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "show vendor products",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/vendor-products/{vendor_id}?pagination_limit=8",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"vendor-products",
+										"{vendor_id}"
+									],
+									"query": [
+										{
+											"key": "pagination_limit",
+											"value": "8"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update vendor account status",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "status",
+											"value": "active",
+											"type": "text"
+										},
+										{
+											"key": "_method",
+											"value": "PUT",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/vendor-update-status/{vendor_id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"vendor-update-status",
+										"{vendor_id}"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -2012,6 +2105,92 @@
 										"admin",
 										"update-city-status",
 										"{id}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Customer",
+					"item": [
+						{
+							"name": "show all customer list",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/customers?pagination_limit=8&search_keyword",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"customers"
+									],
+									"query": [
+										{
+											"key": "pagination_limit",
+											"value": "8"
+										},
+										{
+											"key": "search_keyword",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show customer order data",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/customer-orders/{customer_id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"customer-orders",
+										"{customer_id}"
 									]
 								}
 							},
@@ -3210,7 +3389,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"shipping_detail_id\": \"1\",\r\n    \"vendor_id\": \"1\",\r\n    \"subtotal\": \"200\",\r\n    \"delivery_charge\": \"200\",\r\n    \"discount\": \"200\",\r\n    \"tax\": \"200\",\r\n    \"total_amount\": \"200\",\r\n    \"note\": \"hy\",\r\n    \"order_items\": [\r\n        {\r\n            \"product_id\": \"8\",\r\n            \"product_varient_id\": \"7\",\r\n            \"quantity\": \"2\",\r\n            \"price\": \"2\",\r\n            \"subtotal\": \"2\"\r\n        }\r\n    ]\r\n}",
+									"raw": "{\r\n    \"shipping_detail_id\": \"1\",\r\n    \"vendor_id\": \"1\",\r\n    \"subtotal\": \"200\",\r\n    \"delivery_charge\": \"200\",\r\n    \"discount\": \"200\",\r\n    \"tax\": \"200\",\r\n    \"vendor_store_id\":1,\r\n    \"total_amount\": \"200\",\r\n    \"note\": \"hy\",\r\n    \"order_items\": [\r\n        {\r\n            \"product_id\": \"1\",\r\n            \"product_varient_id\": \"1\",\r\n            \"quantity\": \"2\",\r\n            \"price\": \"2\",\r\n            \"subtotal\": \"2\"\r\n        }\r\n    ]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
