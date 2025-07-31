@@ -669,6 +669,28 @@ paths:
           description: Successful response
           content:
             application/json: {}
+    delete:
+      tags:
+        - Admin > Products
+      summary: delete product
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/vendor/product-update-status/{product_id}:
     post:
       tags:
@@ -1338,6 +1360,41 @@ paths:
       tags:
         - Admin > Customer
       summary: show customer order data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: customer_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/block-customer/{customer_id}:
+    post:
+      tags:
+        - Admin > Customer
+      summary: block customer
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: inactive
+                _method:
+                  type: string
+                  example: PUT
       security:
         - bearerAuth: []
       parameters:
