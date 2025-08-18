@@ -76,6 +76,76 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "forget password",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "nitesh0hamal@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/forget-password",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"forget-password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reset password",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "token",
+											"value": "asdfddfd",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/reset-password",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"reset-password"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -2409,6 +2479,74 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "forget password",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "nitesh0hamal@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/forget-password",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"forget-password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reset password",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "token",
+											"value": "anajhdndhndhcn",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/reset-password",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"reset-password"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -3923,6 +4061,76 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "forget password",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "nitesh0hamal@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/vendor/forget-password",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vendor",
+										"forget-password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reset password",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "token",
+											"value": "nahndhdndh",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/vendor/reset-password",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vendor",
+										"reset-password"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -4140,7 +4348,7 @@
 										},
 										{
 											"key": "name",
-											"value": "Organic Honey",
+											"value": "Organic Honey 2",
 											"type": "text"
 										},
 										{
@@ -4186,7 +4394,7 @@
 										{
 											"key": "product_image[]",
 											"type": "file",
-											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 3.jpg"
+											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 4.jpg"
 										},
 										{
 											"key": "allow_negative_stock",
@@ -4241,12 +4449,12 @@
 										{
 											"key": "varients[0][images][]",
 											"type": "file",
-											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 1.jpg"
+											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 2.jpg"
 										},
 										{
 											"key": "varients[0][images][]",
 											"type": "file",
-											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 2.jpg"
+											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 3.jpg"
 										},
 										{
 											"key": "_method",
@@ -4256,7 +4464,7 @@
 									]
 								},
 								"url": {
-									"raw": "{{url}}/api/vendor/products/{id}",
+									"raw": "{{url}}/api/vendor/products/{product_id}",
 									"host": [
 										"{{url}}"
 									],
@@ -4264,7 +4472,7 @@
 										"api",
 										"vendor",
 										"products",
-										"{id}"
+										"{product_id}"
 									]
 								}
 							},
