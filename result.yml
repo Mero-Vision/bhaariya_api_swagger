@@ -92,6 +92,56 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/forget-password:
+    post:
+      tags:
+        - Admin > Auth
+      summary: forget password
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: nitesh0hamal@gmail.com
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/reset-password:
+    post:
+      tags:
+        - Admin > Auth
+      summary: reset password
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  example: asdfddfd
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/site-settings:
     post:
       tags:
@@ -1476,6 +1526,56 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/forget-password:
+    post:
+      tags:
+        - Customer > Auth
+      summary: forget password
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: nitesh0hamal@gmail.com
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/reset-password:
+    post:
+      tags:
+        - Customer > Auth
+      summary: reset password
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  example: anajhdndhndhcn
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/site-settings:
     get:
       tags:
@@ -2508,6 +2608,56 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/vendor/forget-password:
+    post:
+      tags:
+        - Vendor > Auth
+      summary: forget password
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: nitesh0hamal@gmail.com
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vendor/reset-password:
+    post:
+      tags:
+        - Vendor > Auth
+      summary: reset password
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  example: nahndhdndh
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/vendor/products:
     post:
       tags:
@@ -2620,7 +2770,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/vendor/products/{id}:
+  /api/vendor/products/{product_id}:
     post:
       tags:
         - Vendor > Product
@@ -2645,7 +2795,7 @@ paths:
                   example: '1'
                 name:
                   type: string
-                  example: Organic Honey
+                  example: Organic Honey 2
                 description:
                   type: string
                   example: Raw organic honey from Himalayas
@@ -2716,29 +2866,7 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: id
-          in: path
-          schema:
-            type: string
-          required: true
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    delete:
-      tags:
-        - Vendor > Product
-      summary: delete product
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: id
+        - name: product_id
           in: path
           schema:
             type: string
@@ -2761,6 +2889,29 @@ paths:
           schema:
             type: string
           example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vendor/products/{id}:
+    delete:
+      tags:
+        - Vendor > Product
+      summary: delete product
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
       responses:
         '200':
           description: Successful response
