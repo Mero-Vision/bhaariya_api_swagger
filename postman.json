@@ -2354,6 +2354,386 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "Driver",
+					"item": [
+						{
+							"name": "store",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Nitesh Hamal",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "nitesh0hamal@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "dob",
+											"value": "2003/04/20",
+											"type": "text"
+										},
+										{
+											"key": "phone_number",
+											"value": "9813371345",
+											"type": "text"
+										},
+										{
+											"key": "social_security_number",
+											"value": "6353635",
+											"type": "text"
+										},
+										{
+											"key": "vehicle_year",
+											"value": "2021",
+											"type": "text"
+										},
+										{
+											"key": "vehicle_company",
+											"value": "TVS",
+											"type": "text"
+										},
+										{
+											"key": "vehicle_model",
+											"value": "Raider",
+											"type": "text"
+										},
+										{
+											"key": "vehicle_registration_no",
+											"value": "3434343",
+											"type": "text"
+										},
+										{
+											"key": "bci",
+											"value": "34343",
+											"type": "text"
+										},
+										{
+											"key": "fbi",
+											"value": "21234",
+											"type": "text"
+										},
+										{
+											"key": "remarks",
+											"value": "qqq",
+											"type": "text"
+										},
+										{
+											"key": "profile_image",
+											"type": "file",
+											"src": "/D:/documents/IMG_2636.JPG"
+										},
+										{
+											"key": "driving_license",
+											"type": "file",
+											"src": "/D:/documents/cropped_img.jpg"
+										},
+										{
+											"key": "vehicle_image_front",
+											"type": "file",
+											"src": "/D:/documents/cropped_img (1).jpg"
+										},
+										{
+											"key": "vehicle_image_back",
+											"type": "file",
+											"src": "/C:/Users/nites/Pictures/Screenshots/Screenshot 2025-07-17 223650.png"
+										},
+										{
+											"key": "vehicle_registration_doc",
+											"type": "file",
+											"src": "/C:/Users/nites/Pictures/Screenshots/Screenshot 2025-07-19 231920.png"
+										},
+										{
+											"key": "insurance_doc",
+											"type": "file",
+											"src": "/C:/Users/nites/Pictures/Screenshots/Screenshot 2025-07-19 233557.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/driverv",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"driverv"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "index",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/admin/driver",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"driver"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Aveshesh KC",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "aveshesh@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "dob",
+											"value": "2003/02/20",
+											"type": "text"
+										},
+										{
+											"key": "phone_number",
+											"value": "9813371345",
+											"type": "text"
+										},
+										{
+											"key": "social_security_number",
+											"value": "34343",
+											"type": "text"
+										},
+										{
+											"key": "vehicle_year",
+											"value": "2343",
+											"type": "text"
+										},
+										{
+											"key": "vehicle_company",
+											"value": "erere",
+											"type": "text"
+										},
+										{
+											"key": "vehicle_model",
+											"value": "dds",
+											"type": "text"
+										},
+										{
+											"key": "vehicle_registration_no",
+											"value": "455334",
+											"type": "text"
+										},
+										{
+											"key": "bci_fbi",
+											"value": "343",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "active",
+											"type": "text"
+										},
+										{
+											"key": "remarks",
+											"value": "dfd",
+											"type": "text"
+										},
+										{
+											"key": "profile_image",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "driving_license",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "vehicle_image_front",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "vehicle_image_back",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "vehicle_registration_doc",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "insurance_doc",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "_method",
+											"value": "PUT",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/driver/5",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"driver",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "destroy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/admin/driver/5",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"driver",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "verifyAccountandSetPassword",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "token",
+											"value": "BP7lgMQuiZn4iUuCUPSVBBDlXEjbGur65KPDgZJl",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/set-password",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"set-password"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		},
@@ -4229,62 +4609,7 @@
 										{
 											"key": "product_image[]",
 											"type": "file",
-											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 10.jpg"
-										},
-										{
-											"key": "allow_negative_stock",
-											"value": "true",
-											"type": "text"
-										},
-										{
-											"key": "varients[0][size]",
-											"value": "500ml",
-											"type": "text"
-										},
-										{
-											"key": "varients[0][color]",
-											"value": "",
-											"type": "text"
-										},
-										{
-											"key": "varients[0][varient_selling_price]",
-											"value": "12.99",
-											"type": "text"
-										},
-										{
-											"key": "varients[0][varient_cross_price]",
-											"value": "15.00",
-											"type": "text"
-										},
-										{
-											"key": "varients[0][varient_unit_price]",
-											"value": "11.99",
-											"type": "text"
-										},
-										{
-											"key": "varients[0][varient_stock_quantity]",
-											"value": "25",
-											"type": "text"
-										},
-										{
-											"key": "varients[0][varient_sku]",
-											"value": "HONEY50",
-											"type": "text"
-										},
-										{
-											"key": "varients[0][unit]",
-											"value": "ml",
-											"type": "text"
-										},
-										{
-											"key": "varients[0][images][]",
-											"type": "file",
-											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 12.jpg"
-										},
-										{
-											"key": "varients[0][images][]",
-											"type": "file",
-											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 11.jpg"
+											"src": []
 										}
 									]
 								},
@@ -4395,66 +4720,6 @@
 											"key": "product_image[]",
 											"type": "file",
 											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 4.jpg"
-										},
-										{
-											"key": "allow_negative_stock",
-											"value": "true",
-											"type": "text"
-										},
-										{
-											"key": "varients[0][id]",
-											"value": "1",
-											"type": "text"
-										},
-										{
-											"key": "varients[0][size]",
-											"value": "500ml",
-											"type": "text"
-										},
-										{
-											"key": "varients[0][color]",
-											"value": "",
-											"type": "text"
-										},
-										{
-											"key": "varients[0][varient_selling_price]",
-											"value": "12.99",
-											"type": "text"
-										},
-										{
-											"key": "varients[0][varient_cross_price]",
-											"value": "15.00",
-											"type": "text"
-										},
-										{
-											"key": "varients[0][varient_unit_price]",
-											"value": "11.99",
-											"type": "text"
-										},
-										{
-											"key": "varients[0][varient_stock_quantity]",
-											"value": "25",
-											"type": "text"
-										},
-										{
-											"key": "varients[0][varient_sku]",
-											"value": "HONEY50",
-											"type": "text"
-										},
-										{
-											"key": "varients[0][unit]",
-											"value": "ml",
-											"type": "text"
-										},
-										{
-											"key": "varients[0][images][]",
-											"type": "file",
-											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 2.jpg"
-										},
-										{
-											"key": "varients[0][images][]",
-											"type": "file",
-											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 3.jpg"
 										},
 										{
 											"key": "_method",
@@ -4822,6 +5087,146 @@
 										"vendor",
 										"update-store",
 										"{id}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Driver",
+			"item": [
+				{
+					"name": "Driver",
+					"item": [
+						{
+							"name": "store",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Nitesh Hamal",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "niteshhamal720@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "dob",
+											"value": "2003/04/20",
+											"type": "text"
+										},
+										{
+											"key": "phone_number",
+											"value": "9813371345",
+											"type": "text"
+										},
+										{
+											"key": "social_security_number",
+											"value": "6353635",
+											"type": "text"
+										},
+										{
+											"key": "vehicle_year",
+											"value": "2021",
+											"type": "text"
+										},
+										{
+											"key": "vehicle_company",
+											"value": "TVS",
+											"type": "text"
+										},
+										{
+											"key": "vehicle_model",
+											"value": "Raider",
+											"type": "text"
+										},
+										{
+											"key": "vehicle_registration_no",
+											"value": "3434343",
+											"type": "text"
+										},
+										{
+											"key": "bci",
+											"value": "34343",
+											"type": "text"
+										},
+										{
+											"key": "fbi",
+											"value": "21234",
+											"type": "text"
+										},
+										{
+											"key": "remarks",
+											"value": "qqq",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/driver/driver",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"driver",
+										"driver"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "verifyAccount",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "token",
+											"value": "54057",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/driver/verify-account",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"driver",
+										"verify-account"
 									]
 								}
 							},
