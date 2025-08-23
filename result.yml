@@ -2766,9 +2766,6 @@ paths:
             schema:
               type: object
               properties:
-                store_name:
-                  type: string
-                  example: Bigmart
                 name:
                   type: string
                   example: Hancie
@@ -2778,6 +2775,51 @@ paths:
                 password:
                   type: string
                   example: Password
+                store_name:
+                  type: string
+                  example: ' Skulix Bookstore - Lagankhel'
+                ein:
+                  type: string
+                  example: ' 98-7654321'
+                phone_number:
+                  type: string
+                  example: ' +977-9800000000'
+                store_email:
+                  type: string
+                  example: ' lagankhel@skulix.com'
+                address:
+                  type: string
+                  example: ' Prayag Pokhari, Lagankhel'
+                city:
+                  type: string
+                  example: ' Lalitpur'
+                state:
+                  type: string
+                  example: ' Bagmati'
+                zip_code:
+                  type: string
+                  example: ' 44700'
+                country:
+                  type: string
+                  example: ' Nepal'
+                website:
+                  type: string
+                  example: ' https://skulix.com/stores/lagankhel'
+                sales_tax_id:
+                  type: string
+                  example: ' PAN-123456789'
+                opening_time:
+                  type: string
+                  example: ' 09:00'
+                closing_time:
+                  type: string
+                  example: ' 19:00'
+                latitude:
+                  type: string
+                  example: ' 27.6641234'
+                longitude:
+                  type: string
+                  example: ' 85.3256789'
       parameters:
         - name: Accept
           in: header
@@ -3237,6 +3279,24 @@ paths:
                 password:
                   type: string
                   example: Password
+                profile_image:
+                  type: string
+                  format: binary
+                driving_license:
+                  type: string
+                  format: binary
+                vehicle_image_front:
+                  type: string
+                  format: binary
+                vehicle_image_back:
+                  type: string
+                  format: binary
+                vehicle_registration_doc:
+                  type: string
+                  format: binary
+                insurance_doc:
+                  type: string
+                  format: binary
       parameters:
         - name: Accept
           in: header
