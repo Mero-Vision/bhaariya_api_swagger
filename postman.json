@@ -4353,11 +4353,6 @@
 									"mode": "formdata",
 									"formdata": [
 										{
-											"key": "store_name",
-											"value": "Bigmart",
-											"type": "text"
-										},
-										{
 											"key": "name",
 											"value": "Hancie",
 											"type": "text"
@@ -4370,6 +4365,81 @@
 										{
 											"key": "password",
 											"value": "Password",
+											"type": "text"
+										},
+										{
+											"key": "store_name",
+											"value": " Skulix Bookstore - Lagankhel",
+											"type": "text"
+										},
+										{
+											"key": "ein",
+											"value": " 98-7654321",
+											"type": "text"
+										},
+										{
+											"key": "phone_number",
+											"value": " +977-9800000000",
+											"type": "text"
+										},
+										{
+											"key": "store_email",
+											"value": " lagankhel@skulix.com",
+											"type": "text"
+										},
+										{
+											"key": "address",
+											"value": " Prayag Pokhari, Lagankhel",
+											"type": "text"
+										},
+										{
+											"key": "city",
+											"value": " Lalitpur",
+											"type": "text"
+										},
+										{
+											"key": "state",
+											"value": " Bagmati",
+											"type": "text"
+										},
+										{
+											"key": "zip_code",
+											"value": " 44700",
+											"type": "text"
+										},
+										{
+											"key": "country",
+											"value": " Nepal",
+											"type": "text"
+										},
+										{
+											"key": "website",
+											"value": " https://skulix.com/stores/lagankhel",
+											"type": "text"
+										},
+										{
+											"key": "sales_tax_id",
+											"value": " PAN-123456789",
+											"type": "text"
+										},
+										{
+											"key": "opening_time",
+											"value": " 09:00",
+											"type": "text"
+										},
+										{
+											"key": "closing_time",
+											"value": " 19:00",
+											"type": "text"
+										},
+										{
+											"key": "latitude",
+											"value": " 27.6641234",
+											"type": "text"
+										},
+										{
+											"key": "longitude",
+											"value": " 85.3256789",
 											"type": "text"
 										}
 									]
@@ -5180,6 +5250,36 @@
 											"key": "password",
 											"value": "Password",
 											"type": "text"
+										},
+										{
+											"key": "profile_image",
+											"type": "file",
+											"src": "/C:/Users/nites/Pictures/Screenshots/Screenshot 2025-07-17 223650.png"
+										},
+										{
+											"key": "driving_license",
+											"type": "file",
+											"src": "/C:/Users/nites/Pictures/Screenshots/Screenshot 2025-07-19 231920.png"
+										},
+										{
+											"key": "vehicle_image_front",
+											"type": "file",
+											"src": "/C:/Users/nites/Pictures/Screenshots/Screenshot 2025-07-19 233557.png"
+										},
+										{
+											"key": "vehicle_image_back",
+											"type": "file",
+											"src": "/C:/Users/nites/Pictures/Screenshots/Screenshot 2025-07-19 233658.png"
+										},
+										{
+											"key": "vehicle_registration_doc",
+											"type": "file",
+											"src": "/C:/Users/nites/Pictures/Screenshots/Screenshot 2025-07-19 233909.png"
+										},
+										{
+											"key": "insurance_doc",
+											"type": "file",
+											"src": "/C:/Users/nites/Pictures/Screenshots/Screenshot 2025-07-19 235402.png"
 										}
 									]
 								},
