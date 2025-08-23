@@ -39,6 +39,7 @@ tags:
   - name: Admin > State
   - name: Admin > City
   - name: Admin > Customer
+  - name: Admin > Driver
   - name: Customer
   - name: Customer > Auth
   - name: Customer > Site Settings
@@ -61,6 +62,8 @@ tags:
   - name: Vendor > Category
   - name: Vendor > Vendor
   - name: Vendor > Vendor Store
+  - name: Driver
+  - name: Driver > Driver
 paths:
   /api/admin/login:
     post:
@@ -1463,6 +1466,212 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/driverv:
+    post:
+      tags:
+        - Admin > Driver
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Nitesh Hamal
+                email:
+                  type: string
+                  example: nitesh0hamal@gmail.com
+                dob:
+                  type: string
+                  example: 2003/04/20
+                phone_number:
+                  type: integer
+                  example: '9813371345'
+                social_security_number:
+                  type: integer
+                  example: '6353635'
+                vehicle_year:
+                  type: integer
+                  example: '2021'
+                vehicle_company:
+                  type: string
+                  example: TVS
+                vehicle_model:
+                  type: string
+                  example: Raider
+                vehicle_registration_no:
+                  type: integer
+                  example: '3434343'
+                bci:
+                  type: integer
+                  example: '34343'
+                fbi:
+                  type: integer
+                  example: '21234'
+                remarks:
+                  type: string
+                  example: qqq
+                profile_image:
+                  type: string
+                  format: binary
+                driving_license:
+                  type: string
+                  format: binary
+                vehicle_image_front:
+                  type: string
+                  format: binary
+                vehicle_image_back:
+                  type: string
+                  format: binary
+                vehicle_registration_doc:
+                  type: string
+                  format: binary
+                insurance_doc:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/driver:
+    get:
+      tags:
+        - Admin > Driver
+      summary: index
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/driver/5:
+    post:
+      tags:
+        - Admin > Driver
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Aveshesh KC
+                email:
+                  type: string
+                  example: aveshesh@gmail.com
+                dob:
+                  type: string
+                  example: 2003/02/20
+                phone_number:
+                  type: integer
+                  example: '9813371345'
+                social_security_number:
+                  type: integer
+                  example: '34343'
+                vehicle_year:
+                  type: integer
+                  example: '2343'
+                vehicle_company:
+                  type: string
+                  example: erere
+                vehicle_model:
+                  type: string
+                  example: dds
+                vehicle_registration_no:
+                  type: integer
+                  example: '455334'
+                bci_fbi:
+                  type: integer
+                  example: '343'
+                status:
+                  type: string
+                  example: active
+                remarks:
+                  type: string
+                  example: dfd
+                profile_image:
+                  type: string
+                driving_license:
+                  type: string
+                vehicle_image_front:
+                  type: string
+                vehicle_image_back:
+                  type: string
+                vehicle_registration_doc:
+                  type: string
+                insurance_doc:
+                  type: string
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Admin > Driver
+      summary: destroy
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/set-password:
+    post:
+      tags:
+        - Admin > Driver
+      summary: verifyAccountandSetPassword
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  example: BP7lgMQuiZn4iUuCUPSVBBDlXEjbGur65KPDgZJl
+                password:
+                  type: string
+                  example: Password
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/login:
     post:
       tags:
@@ -2711,35 +2920,6 @@ paths:
                 product_image[]:
                   type: string
                   format: binary
-                allow_negative_stock:
-                  type: boolean
-                  example: 'true'
-                varients[0][size]:
-                  type: string
-                  example: 500ml
-                varients[0][color]:
-                  type: string
-                varients[0][varient_selling_price]:
-                  type: number
-                  example: '12.99'
-                varients[0][varient_cross_price]:
-                  type: number
-                  example: '15.00'
-                varients[0][varient_unit_price]:
-                  type: number
-                  example: '11.99'
-                varients[0][varient_stock_quantity]:
-                  type: integer
-                  example: '25'
-                varients[0][varient_sku]:
-                  type: string
-                  example: HONEY50
-                varients[0][unit]:
-                  type: string
-                  example: ml
-                varients[0][images][]:
-                  type: string
-                  format: binary
       security:
         - bearerAuth: []
       parameters:
@@ -2821,38 +3001,6 @@ paths:
                   type: string
                   example: DSAFDSH
                 product_image[]:
-                  type: string
-                  format: binary
-                allow_negative_stock:
-                  type: boolean
-                  example: 'true'
-                varients[0][id]:
-                  type: integer
-                  example: '1'
-                varients[0][size]:
-                  type: string
-                  example: 500ml
-                varients[0][color]:
-                  type: string
-                varients[0][varient_selling_price]:
-                  type: number
-                  example: '12.99'
-                varients[0][varient_cross_price]:
-                  type: number
-                  example: '15.00'
-                varients[0][varient_unit_price]:
-                  type: number
-                  example: '11.99'
-                varients[0][varient_stock_quantity]:
-                  type: integer
-                  example: '25'
-                varients[0][varient_sku]:
-                  type: string
-                  example: HONEY50
-                varients[0][unit]:
-                  type: string
-                  example: ml
-                varients[0][images][]:
                   type: string
                   format: binary
                 _method:
@@ -3034,6 +3182,92 @@ paths:
           schema:
             type: string
           required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/driver/driver:
+    post:
+      tags:
+        - Driver > Driver
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Nitesh Hamal
+                email:
+                  type: string
+                  example: niteshhamal720@gmail.com
+                dob:
+                  type: string
+                  example: 2003/04/20
+                phone_number:
+                  type: integer
+                  example: '9813371345'
+                social_security_number:
+                  type: integer
+                  example: '6353635'
+                vehicle_year:
+                  type: integer
+                  example: '2021'
+                vehicle_company:
+                  type: string
+                  example: TVS
+                vehicle_model:
+                  type: string
+                  example: Raider
+                vehicle_registration_no:
+                  type: integer
+                  example: '3434343'
+                bci:
+                  type: integer
+                  example: '34343'
+                fbi:
+                  type: integer
+                  example: '21234'
+                remarks:
+                  type: string
+                  example: qqq
+                password:
+                  type: string
+                  example: Password
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/driver/verify-account:
+    post:
+      tags:
+        - Driver > Driver
+      summary: verifyAccount
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: integer
+                  example: '54057'
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
       responses:
         '200':
           description: Successful response
