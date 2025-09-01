@@ -2475,21 +2475,21 @@
 									]
 								},
 								"url": {
-									"raw": "{{url}}/api/admin/driverv",
+									"raw": "{{url}}/api/admin/driver",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
 										"admin",
-										"driverv"
+										"driver"
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "index",
+							"name": "show all driver list",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -2502,9 +2502,15 @@
 									]
 								},
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "{{url}}/api/admin/driver",
+									"raw": "{{url}}/api/admin/driver?pagination_limit=8&search_keyword",
 									"host": [
 										"{{url}}"
 									],
@@ -2512,6 +2518,16 @@
 										"api",
 										"admin",
 										"driver"
+									],
+									"query": [
+										{
+											"key": "pagination_limit",
+											"value": "8"
+										},
+										{
+											"key": "search_keyword",
+											"value": null
+										}
 									]
 								}
 							},
@@ -2720,14 +2736,14 @@
 									]
 								},
 								"url": {
-									"raw": "{{url}}/api/admin/set-password",
+									"raw": "{{url}}/api/admin/verify-drivers",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
 										"admin",
-										"set-password"
+										"verify-drivers"
 									]
 								}
 							},
@@ -5157,6 +5173,96 @@
 										"vendor",
 										"update-store",
 										"{id}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "State",
+					"item": [
+						{
+							"name": "show all state list",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "school-id",
+										"value": "1",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/vendor/states",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vendor",
+										"states"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "City",
+					"item": [
+						{
+							"name": "show all city list",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "school-id",
+										"value": "1",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/vendor/city",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vendor",
+										"city"
 									]
 								}
 							},

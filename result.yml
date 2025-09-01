@@ -62,6 +62,8 @@ tags:
   - name: Vendor > Category
   - name: Vendor > Vendor
   - name: Vendor > Vendor Store
+  - name: Vendor > State
+  - name: Vendor > City
   - name: Driver
   - name: Driver > Driver
 paths:
@@ -1466,7 +1468,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/admin/driverv:
+  /api/admin/driver:
     post:
       tags:
         - Admin > Driver
@@ -1544,13 +1546,27 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/admin/driver:
     get:
       tags:
         - Admin > Driver
-      summary: index
+      summary: show all driver list
       security:
         - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: pagination_limit
+          in: query
+          schema:
+            type: integer
+          example: '8'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -1642,7 +1658,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/admin/set-password:
+  /api/admin/verify-drivers:
     post:
       tags:
         - Admin > Driver
@@ -3224,6 +3240,52 @@ paths:
           schema:
             type: string
           required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vendor/states:
+    get:
+      tags:
+        - Vendor > State
+      summary: show all state list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: school-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vendor/city:
+    get:
+      tags:
+        - Vendor > City
+      summary: show all city list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: school-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
