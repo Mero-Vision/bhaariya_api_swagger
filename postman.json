@@ -521,7 +521,7 @@
 										{
 											"key": "category_image",
 											"type": "file",
-											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 2.jpg"
+											"src": "/Users/hanciephago/Pictures/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg"
 										}
 									]
 								},
@@ -713,7 +713,7 @@
 										{
 											"key": "sub_category_image",
 											"type": "file",
-											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 4.jpg"
+											"src": "/Users/hanciephago/Pictures/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg"
 										},
 										{
 											"key": "category_id",
@@ -915,7 +915,7 @@
 										{
 											"key": "brand_image",
 											"type": "file",
-											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 14.jpg"
+											"src": "/Users/hanciephago/Pictures/IMG_0374 Copy.JPG"
 										}
 									]
 								},
@@ -3226,14 +3226,14 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/api/products/{id}",
+									"raw": "{{url}}/api/products/{slug}",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
 										"products",
-										"{id}"
+										"{slug}"
 									]
 								}
 							},
@@ -4010,7 +4010,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"shipping_detail_id\": \"1\",\r\n    \"vendor_id\": \"1\",\r\n    \"subtotal\": \"200\",\r\n    \"delivery_charge\": \"200\",\r\n    \"discount\": \"200\",\r\n    \"tax\": \"200\",\r\n    \"vendor_store_id\":1,\r\n    \"total_amount\": \"200\",\r\n    \"note\": \"hy\",\r\n    \"order_items\": [\r\n        {\r\n            \"product_id\": \"1\",\r\n            \"product_varient_id\": \"1\",\r\n            \"quantity\": \"2\",\r\n            \"price\": \"2\",\r\n            \"subtotal\": \"2\"\r\n        }\r\n    ]\r\n}",
+									"raw": "{\r\n    \"shipping_detail_id\": \"1\",\r\n    \"vendor_id\": \"1\",\r\n    \"subtotal\": \"200\",\r\n    \"delivery_charge\": \"200\",\r\n    \"discount\": \"200\",\r\n    \"tax\": \"200\",\r\n    \"vendor_store_id\":1,\r\n    \"total_amount\": \"200\",\r\n    \"note\": \"hy\",\r\n    \"email\":\"hanciephago@gmail.com\",\r\n    \"order_items\": [\r\n        {\r\n            \"product_id\": \"1\",\r\n            \"quantity\": \"2\",\r\n            \"price\": \"2\",\r\n            \"subtotal\": \"2\"\r\n        }\r\n    ]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"

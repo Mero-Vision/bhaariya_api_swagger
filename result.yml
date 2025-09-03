@@ -1952,7 +1952,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/products/{id}:
+  /api/products/{slug}:
     get:
       tags:
         - Customer > Products
@@ -1965,7 +1965,7 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: id
+        - name: slug
           in: path
           schema:
             type: string
@@ -2460,9 +2460,9 @@ paths:
                 vendor_store_id: 1
                 total_amount: '200'
                 note: hy
+                email: hanciephago@gmail.com
                 order_items:
                   - product_id: '1'
-                    product_varient_id: '1'
                     quantity: '2'
                     price: '2'
                     subtotal: '2'
