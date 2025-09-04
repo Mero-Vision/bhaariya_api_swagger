@@ -2745,6 +2745,47 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "Dashboard",
+					"item": [
+						{
+							"name": "show analytics count",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/dashboard/analytics-count",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"dashboard",
+										"analytics-count"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		},
@@ -2968,6 +3009,98 @@
 									"path": [
 										"api",
 										"reset-password"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Google Auth",
+					"item": [
+						{
+							"name": "google auth redirect",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/auth/google/redirect",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"google",
+										"redirect"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "auth google callback",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/auth/google/callback",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"google",
+										"callback"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "auth google token",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id_token\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6Ikp\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/auth/google/token",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"google",
+										"token"
 									]
 								}
 							},
@@ -4423,7 +4556,7 @@
 										},
 										{
 											"key": "email",
-											"value": "hanciephago@gmail.com",
+											"value": "hanciewanemphago@gmail.com",
 											"type": "text"
 										},
 										{
@@ -4502,6 +4635,41 @@
 										"api",
 										"vendor",
 										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "verify vendor account",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "token",
+											"value": "34546456",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/vendor/verify-account",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vendor",
+										"verify-account"
 									]
 								}
 							},

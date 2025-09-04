@@ -40,8 +40,10 @@ tags:
   - name: Admin > City
   - name: Admin > Customer
   - name: Admin > Driver
+  - name: Admin > Dashboard
   - name: Customer
   - name: Customer > Auth
+  - name: Customer > Google Auth
   - name: Customer > Site Settings
   - name: Customer > Category
   - name: Customer > Sub Category
@@ -1685,6 +1687,24 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/dashboard/analytics-count:
+    get:
+      tags:
+        - Admin > Dashboard
+      summary: show analytics count
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/login:
     post:
       tags:
@@ -1812,6 +1832,61 @@ paths:
                 token:
                   type: string
                   example: anajhdndhndhcn
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/auth/google/redirect:
+    get:
+      tags:
+        - Customer > Google Auth
+      summary: google auth redirect
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/auth/google/callback:
+    get:
+      tags:
+        - Customer > Google Auth
+      summary: auth google callback
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/auth/google/token:
+    post:
+      tags:
+        - Customer > Google Auth
+      summary: auth google token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                id_token: eyJhbGciOiJSUzI1NiIsInR5cCI6Ikp
       parameters:
         - name: Accept
           in: header
@@ -2796,7 +2871,7 @@ paths:
                   example: Hancie
                 email:
                   type: string
-                  example: hanciephago@gmail.com
+                  example: hanciewanemphago@gmail.com
                 password:
                   type: string
                   example: Password
@@ -2836,6 +2911,31 @@ paths:
                 longitude:
                   type: string
                   example: ' 85.3256789'
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vendor/verify-account:
+    post:
+      tags:
+        - Vendor > Auth
+      summary: verify vendor account
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: integer
+                  example: '34546456'
       parameters:
         - name: Accept
           in: header
