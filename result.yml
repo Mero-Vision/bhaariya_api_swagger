@@ -1506,12 +1506,12 @@ paths:
                 vehicle_registration_no:
                   type: integer
                   example: '3434343'
-                bci:
-                  type: integer
-                  example: '34343'
-                fbi:
-                  type: integer
-                  example: '21234'
+                is_bci_verified:
+                  type: boolean
+                  example: 'true'
+                is_fbi_verified:
+                  type: boolean
+                  example: 'false'
                 remarks:
                   type: string
                   example: qqq
@@ -1521,10 +1521,7 @@ paths:
                 driving_license:
                   type: string
                   format: binary
-                vehicle_image_front:
-                  type: string
-                  format: binary
-                vehicle_image_back:
+                vehicle_image:
                   type: string
                   format: binary
                 vehicle_registration_doc:
@@ -1610,7 +1607,9 @@ paths:
                 vehicle_registration_no:
                   type: integer
                   example: '455334'
-                bci_fbi:
+                is_bci_verified:
+                  type: string
+                is_fbi_verified:
                   type: integer
                   example: '343'
                 status:
@@ -1623,9 +1622,7 @@ paths:
                   type: string
                 driving_license:
                   type: string
-                vehicle_image_front:
-                  type: string
-                vehicle_image_back:
+                vehicle_image:
                   type: string
                 vehicle_registration_doc:
                   type: string
@@ -1734,12 +1731,37 @@ paths:
                   example: Hello
                 email:
                   type: string
-                  example: hello@gmail.com
+                  example: hanciephago@gmail.com
                 password:
                   type: string
                   example: Password
       security:
         - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/verify-account:
+    post:
+      tags:
+        - Customer > Customer
+      summary: verify customer account
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  example: dsfdgdfgfdhfgh
       parameters:
         - name: Accept
           in: header
@@ -2090,31 +2112,6 @@ paths:
                   example: Password2
       security:
         - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/verify-account:
-    post:
-      tags:
-        - Customer > Customer
-      summary: verify customer account
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                token:
-                  type: string
-                  example: dsfdgdfgfdhfgh
       parameters:
         - name: Accept
           in: header
@@ -2648,6 +2645,18 @@ paths:
                               product_image: >-
                                 http://localhost:8000/storage/4/how-ot-make-picture-black-and-white-after.jpg
                         product_varient: null
+  /api/stripe/webhook:
+    post:
+      tags:
+        - Customer > Order
+      summary: stripe webhook
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/vendor-stores:
     get:
       tags:
@@ -2794,9 +2803,6 @@ paths:
                 store_name:
                   type: string
                   example: ' Skulix Bookstore - Lagankhel'
-                ein:
-                  type: string
-                  example: ' 98-7654321'
                 phone_number:
                   type: string
                   example: ' +977-9800000000'
@@ -2818,12 +2824,6 @@ paths:
                 country:
                   type: string
                   example: ' Nepal'
-                website:
-                  type: string
-                  example: ' https://skulix.com/stores/lagankhel'
-                sales_tax_id:
-                  type: string
-                  example: ' PAN-123456789'
                 opening_time:
                   type: string
                   example: ' 09:00'

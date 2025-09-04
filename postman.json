@@ -2428,13 +2428,13 @@
 											"type": "text"
 										},
 										{
-											"key": "bci",
-											"value": "34343",
+											"key": "is_bci_verified",
+											"value": "true",
 											"type": "text"
 										},
 										{
-											"key": "fbi",
-											"value": "21234",
+											"key": "is_fbi_verified",
+											"value": "false",
 											"type": "text"
 										},
 										{
@@ -2453,14 +2453,9 @@
 											"src": "/D:/documents/cropped_img.jpg"
 										},
 										{
-											"key": "vehicle_image_front",
+											"key": "vehicle_image",
 											"type": "file",
 											"src": "/D:/documents/cropped_img (1).jpg"
-										},
-										{
-											"key": "vehicle_image_back",
-											"type": "file",
-											"src": "/C:/Users/nites/Pictures/Screenshots/Screenshot 2025-07-17 223650.png"
 										},
 										{
 											"key": "vehicle_registration_doc",
@@ -2603,7 +2598,12 @@
 											"type": "text"
 										},
 										{
-											"key": "bci_fbi",
+											"key": "is_bci_verified",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "is_fbi_verified",
 											"value": "343",
 											"type": "text"
 										},
@@ -2628,12 +2628,7 @@
 											"type": "text"
 										},
 										{
-											"key": "vehicle_image_front",
-											"value": "",
-											"type": "text"
-										},
-										{
-											"key": "vehicle_image_back",
+											"key": "vehicle_image",
 											"value": "",
 											"type": "text"
 										},
@@ -2853,7 +2848,7 @@
 										},
 										{
 											"key": "email",
-											"value": "hello@gmail.com",
+											"value": "hanciephago@gmail.com",
 											"type": "text"
 										},
 										{
@@ -2871,6 +2866,40 @@
 									"path": [
 										"api",
 										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "verify customer account",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "token",
+											"value": "rterteyy",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/verify-account",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"verify-account"
 									]
 								}
 							},
@@ -4122,6 +4151,25 @@
 									"body": "{\n    \"data\": [\n        {\n            \"id\": 3,\n            \"user_id\": 1,\n            \"order_number\": \"ORD2025020402\",\n            \"shipping_detail_id\": 1,\n            \"subtotal\": \"200.00\",\n            \"delivery_charge\": \"200.00\",\n            \"discount\": \"200.00\",\n            \"tax\": \"200.00\",\n            \"total_amount\": \"200.00\",\n            \"note\": \"hy\",\n            \"customer\": {\n                \"id\": 1,\n                \"name\": \"Admin\",\n                \"email\": \"info@cartyne.com\",\n                \"email_verified_at\": \"2025-01-30T18:21:25.000000Z\",\n                \"roles\": [\n                    \"admin\"\n                ],\n                \"created_at\": \"2025-01-30 06:21 pm\",\n                \"updated_at\": \"2025-01-30 06:21 pm\"\n            },\n            \"shipping_details\": null,\n            \"order_items\": [\n                {\n                    \"id\": 2,\n                    \"user_id\": 1,\n                    \"order_id\": 3,\n                    \"product_id\": 2,\n                    \"product_variant_id\": null,\n                    \"quantity\": 2,\n                    \"price\": \"2.00\",\n                    \"subtotal\": \"4.00\",\n                    \"product\": {\n                        \"id\": 2,\n                        \"category_id\": 1,\n                        \"brand_id\": 1,\n                        \"name\": \"Mobile\",\n                        \"slug\": \"mobile\",\n                        \"description\": \"dfdgfg\",\n                        \"selling_price\": \"200.00\",\n                        \"cross_price\": \"300.00\",\n                        \"unit_price\": \"100.00\",\n                        \"stock_quantity\": \"500.00\",\n                        \"sku\": \"DGFT56\",\n                        \"allow_negative_stock\": 1,\n                        \"has_varient\": 1,\n                        \"product_weight\": null,\n                        \"status\": \"active\",\n                        \"created_at\": \"2025-02-01T14:24:14.000000Z\",\n                        \"updated_at\": \"2025-02-01T14:24:14.000000Z\",\n                        \"product_images\": [\n                            {\n                                \"id\": 3,\n                                \"product_image\": \"http://localhost:8000/storage/4/how-ot-make-picture-black-and-white-after.jpg\"\n                            }\n                        ]\n                    },\n                    \"product_varient\": {\n                        \"id\": 2,\n                        \"product_id\": 2,\n                        \"size\": \"XXL\",\n                        \"color\": \"RED\",\n                        \"selling_price\": \"200.00\",\n                        \"cross_price\": \"300.00\",\n                        \"unit_price\": \"100.00\",\n                        \"stock_quantity\": \"500.00\",\n                        \"sku\": \"GFG67\",\n                        \"created_at\": \"2025-02-01T14:24:14.000000Z\",\n                        \"updated_at\": \"2025-02-01T14:24:14.000000Z\",\n                        \"product_varient_images\": [\n                            {\n                                \"id\": 2,\n                                \"product_image\": \"http://localhost:8000/storage/3/how-ot-make-picture-black-and-white-after.jpg\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        },\n        {\n            \"id\": 1,\n            \"user_id\": 1,\n            \"order_number\": \"ORD2025020401\",\n            \"shipping_detail_id\": 1,\n            \"subtotal\": \"200.00\",\n            \"delivery_charge\": \"200.00\",\n            \"discount\": \"200.00\",\n            \"tax\": \"200.00\",\n            \"total_amount\": \"200.00\",\n            \"note\": \"hy\",\n            \"customer\": {\n                \"id\": 1,\n                \"name\": \"Admin\",\n                \"email\": \"info@cartyne.com\",\n                \"email_verified_at\": \"2025-01-30T18:21:25.000000Z\",\n                \"roles\": [\n                    \"admin\"\n                ],\n                \"created_at\": \"2025-01-30 06:21 pm\",\n                \"updated_at\": \"2025-01-30 06:21 pm\"\n            },\n            \"shipping_details\": null,\n            \"order_items\": [\n                {\n                    \"id\": 1,\n                    \"user_id\": 1,\n                    \"order_id\": 1,\n                    \"product_id\": 2,\n                    \"product_variant_id\": null,\n                    \"quantity\": 2,\n                    \"price\": \"2.00\",\n                    \"subtotal\": \"4.00\",\n                    \"product\": {\n                        \"id\": 2,\n                        \"category_id\": 1,\n                        \"brand_id\": 1,\n                        \"name\": \"Mobile\",\n                        \"slug\": \"mobile\",\n                        \"description\": \"dfdgfg\",\n                        \"selling_price\": \"200.00\",\n                        \"cross_price\": \"300.00\",\n                        \"unit_price\": \"100.00\",\n                        \"stock_quantity\": \"500.00\",\n                        \"sku\": \"DGFT56\",\n                        \"allow_negative_stock\": 1,\n                        \"has_varient\": 1,\n                        \"product_weight\": null,\n                        \"status\": \"active\",\n                        \"created_at\": \"2025-02-01T14:24:14.000000Z\",\n                        \"updated_at\": \"2025-02-01T14:24:14.000000Z\",\n                        \"product_images\": [\n                            {\n                                \"id\": 3,\n                                \"product_image\": \"http://localhost:8000/storage/4/how-ot-make-picture-black-and-white-after.jpg\"\n                            }\n                        ]\n                    },\n                    \"product_varient\": null\n                }\n            ]\n        }\n    ]\n}"
 								}
 							]
+						},
+						{
+							"name": "stripe webhook",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/stripe/webhook",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"stripe",
+										"webhook"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -4389,11 +4437,6 @@
 											"type": "text"
 										},
 										{
-											"key": "ein",
-											"value": " 98-7654321",
-											"type": "text"
-										},
-										{
 											"key": "phone_number",
 											"value": " +977-9800000000",
 											"type": "text"
@@ -4426,16 +4469,6 @@
 										{
 											"key": "country",
 											"value": " Nepal",
-											"type": "text"
-										},
-										{
-											"key": "website",
-											"value": " https://skulix.com/stores/lagankhel",
-											"type": "text"
-										},
-										{
-											"key": "sales_tax_id",
-											"value": " PAN-123456789",
 											"type": "text"
 										},
 										{
