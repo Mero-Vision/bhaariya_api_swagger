@@ -2072,6 +2072,50 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/search-products:
+    get:
+      tags:
+        - Customer > Products
+      summary: search/filter products
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+          example: Organic
+        - name: brand_id
+          in: query
+          schema:
+            type: string
+        - name: sub_category_id
+          in: query
+          schema:
+            type: string
+        - name: sort_by
+          in: query
+          schema:
+            type: string
+          example: price_low_high
+        - name: min_price
+          in: query
+          schema:
+            type: integer
+          example: '100'
+        - name: max_price
+          in: query
+          schema:
+            type: integer
+          example: '1000'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/customer/{customer_id}:
     get:
       tags:

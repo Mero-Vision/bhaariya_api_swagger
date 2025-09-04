@@ -3400,6 +3400,56 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "search/filter products",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/search-products?search_keyword=Organic&brand_id&sub_category_id&sort_by=price_low_high&min_price=100&max_price=1000",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"search-products"
+									],
+									"query": [
+										{
+											"key": "search_keyword",
+											"value": "Organic"
+										},
+										{
+											"key": "brand_id",
+											"value": null
+										},
+										{
+											"key": "sub_category_id",
+											"value": null
+										},
+										{
+											"key": "sort_by",
+											"value": "price_low_high"
+										},
+										{
+											"key": "min_price",
+											"value": "100"
+										},
+										{
+											"key": "max_price",
+											"value": "1000"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
