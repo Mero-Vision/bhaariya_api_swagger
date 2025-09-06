@@ -3734,6 +3734,21 @@
 											"key": "location",
 											"value": "Apt 4B",
 											"type": "text"
+										},
+										{
+											"key": "mobile_no",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "city",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "zip_code",
+											"value": "",
+											"type": "text"
 										}
 									]
 								},

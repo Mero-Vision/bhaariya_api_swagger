@@ -2268,6 +2268,12 @@ paths:
                 location:
                   type: string
                   example: Apt 4B
+                mobile_no:
+                  type: string
+                city:
+                  type: string
+                zip_code:
+                  type: string
       security:
         - bearerAuth: []
       parameters:
