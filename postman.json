@@ -3684,10 +3684,10 @@
 					]
 				},
 				{
-					"name": "Shipping Details",
+					"name": "Delivery Address",
 					"item": [
 						{
-							"name": "store shipping details",
+							"name": "store delivery address",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -3711,60 +3711,40 @@
 									"mode": "formdata",
 									"formdata": [
 										{
-											"key": "recipient_name",
-											"value": "John Doe",
-											"type": "text"
-										},
-										{
-											"key": "contact_no",
-											"value": "+1-555-123-4567",
-											"type": "text"
-										},
-										{
-											"key": "email",
-											"value": "john.doe@example.com",
-											"type": "text"
-										},
-										{
-											"key": "street_address",
-											"value": "123 Main St",
-											"type": "text"
-										},
-										{
-											"key": "apartment_suite",
-											"value": "Apt 4B",
-											"type": "text"
-										},
-										{
-											"key": "city",
-											"value": "Los Angeles",
-											"type": "text"
-										},
-										{
-											"key": "state",
-											"value": "CA",
-											"type": "text"
-										},
-										{
-											"key": "zip_code",
-											"value": "90001",
+											"key": "label",
+											"value": "Home",
 											"type": "text"
 										},
 										{
 											"key": "landmark",
-											"value": "Near Central Park",
+											"value": "near big mart",
+											"type": "text"
+										},
+										{
+											"key": "latitude",
+											"value": "1.3.443.7",
+											"type": "text"
+										},
+										{
+											"key": "longitude",
+											"value": "1.2.3.45",
+											"type": "text"
+										},
+										{
+											"key": "location",
+											"value": "Apt 4B",
 											"type": "text"
 										}
 									]
 								},
 								"url": {
-									"raw": "{{url}}/api/shipping-details",
+									"raw": "{{url}}/api/delivery-address",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"shipping-details"
+										"delivery-address"
 									]
 								}
 							},
@@ -3792,13 +3772,13 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/api/shipping-details",
+									"raw": "{{url}}/api/delivery-address",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"shipping-details"
+										"delivery-address"
 									]
 								}
 							},
@@ -3826,13 +3806,13 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/api/shipping-details/{id}",
+									"raw": "{{url}}/api/delivery-address/{id}",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"shipping-details",
+										"delivery-address",
 										"{id}"
 									]
 								}
@@ -3840,7 +3820,7 @@
 							"response": []
 						},
 						{
-							"name": "delete shipping details",
+							"name": "delete delivery address",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -3861,13 +3841,13 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/api/shipping-details/{id}",
+									"raw": "{{url}}/api/delivery-address/{id}",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"shipping-details",
+										"delivery-address",
 										"{id}"
 									]
 								}
@@ -3875,7 +3855,7 @@
 							"response": []
 						},
 						{
-							"name": "update shipping detail status",
+							"name": "update delivery address status",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -3911,13 +3891,13 @@
 									]
 								},
 								"url": {
-									"raw": "{{url}}/api/shipping-details/update-status/{id}",
+									"raw": "{{url}}/api/delivery-address/update-status/{id}",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"shipping-details",
+										"delivery-address",
 										"update-status",
 										"{id}"
 									]
@@ -3926,7 +3906,7 @@
 							"response": []
 						},
 						{
-							"name": "update shipping details",
+							"name": "update delivery address",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -3950,60 +3930,45 @@
 									"mode": "formdata",
 									"formdata": [
 										{
-											"key": "recipient_name",
-											"value": "John Doe",
-											"type": "text"
-										},
-										{
-											"key": "contact_no",
-											"value": "+1-555-123-4567",
-											"type": "text"
-										},
-										{
-											"key": "email",
-											"value": "john.doe@example.com",
-											"type": "text"
-										},
-										{
-											"key": "street_address",
-											"value": "123 Main St",
-											"type": "text"
-										},
-										{
-											"key": "apartment_suite",
-											"value": "Apt 4B",
-											"type": "text"
-										},
-										{
-											"key": "city",
-											"value": "Los Angeles",
-											"type": "text"
-										},
-										{
-											"key": "state",
-											"value": "CA",
-											"type": "text"
-										},
-										{
-											"key": "zip_code",
-											"value": "90001",
+											"key": "label",
+											"value": "Home",
 											"type": "text"
 										},
 										{
 											"key": "landmark",
-											"value": "Near Central Park",
+											"value": "near big mart",
+											"type": "text"
+										},
+										{
+											"key": "latitude",
+											"value": "1.3.443.7",
+											"type": "text"
+										},
+										{
+											"key": "longitude",
+											"value": "1.2.3.45",
+											"type": "text"
+										},
+										{
+											"key": "location",
+											"value": "Apt 4B",
+											"type": "text"
+										},
+										{
+											"key": "_method",
+											"value": "PUT",
 											"type": "text"
 										}
 									]
 								},
 								"url": {
-									"raw": "{{url}}/api/shipping-details/{id}",
+									"raw": "{{url}}/api/delivery-address/{id}",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"shipping-details",
+										"delivery-address",
 										"{id}"
 									]
 								}
@@ -4057,6 +4022,11 @@
 										{
 											"key": "price",
 											"value": "300",
+											"type": "text"
+										},
+										{
+											"key": "vendor_store_id",
+											"value": "1",
 											"type": "text"
 										}
 									]
@@ -4222,7 +4192,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"shipping_detail_id\": \"1\",\r\n    \"vendor_id\": \"1\",\r\n    \"subtotal\": \"200\",\r\n    \"delivery_charge\": \"200\",\r\n    \"discount\": \"200\",\r\n    \"tax\": \"200\",\r\n    \"vendor_store_id\":1,\r\n    \"total_amount\": \"200\",\r\n    \"note\": \"hy\",\r\n    \"email\":\"hanciephago@gmail.com\",\r\n    \"order_items\": [\r\n        {\r\n            \"product_id\": \"1\",\r\n            \"quantity\": \"2\",\r\n            \"price\": \"2\",\r\n            \"subtotal\": \"2\"\r\n        }\r\n    ]\r\n}",
+									"raw": "{\r\n    \"delivery_address_id\": \"1\",\r\n    \"subtotal\": \"200\",\r\n    \"delivery_charge\": \"200\",\r\n    \"discount\": \"200\",\r\n    \"tax\": \"200\",\r\n    \"total_amount\": \"200\",\r\n    \"note\": \"hy\",\r\n    \"email\": \"hanciephago@gmail.com\",\r\n    \"order_items\": [\r\n        {\r\n            \"product_id\": \"1\",\r\n            \"quantity\": \"2\",\r\n            \"price\": \"2\",\r\n            \"subtotal\": \"2\",\r\n            \"vendor_store_id\": \"1\"\r\n        }\r\n    ]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
