@@ -4,7 +4,7 @@
 		"name": "Bhaariya",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "36246021",
-		"_collection_link": "https://mero-vision.postman.co/workspace/Team-Workspace~1395415a-98af-4bc5-853c-6265c2c2d0cd/collection/36246021-ae152ee2-63fa-4eaf-b53b-54c29ffaecfd?action=share&source=collection_link&creator=36246021"
+		"_collection_link": "https://web.postman.co/workspace/Team-Workspace~1395415a-98af-4bc5-853c-6265c2c2d0cd/collection/36246021-ae152ee2-63fa-4eaf-b53b-54c29ffaecfd?action=share&source=collection_link&creator=36246021"
 	},
 	"item": [
 		{
@@ -2786,6 +2786,234 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "Vendor Store",
+					"item": [
+						{
+							"name": "show all vendor store list",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "product_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "300",
+											"type": "text"
+										},
+										{
+											"key": "vendor_store_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/vendor-stores",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"vendor-stores"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update vendor store status",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "status",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "_method",
+											"value": "PUT",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/vendor-stores/{id}/status",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"vendor-stores",
+										"{id}",
+										"status"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show single vendor store data",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/vendor-stores/10",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"vendor-stores",
+										"10"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "vendor store product list",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/vendor-store-products/{vendor_store_id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"vendor-store-products",
+										"{vendor_store_id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show vendor store users",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/vendor-store-users/10",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"vendor-store-users",
+										"10"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		},
@@ -4021,12 +4249,7 @@
 									"formdata": [
 										{
 											"key": "product_id",
-											"value": "8",
-											"type": "text"
-										},
-										{
-											"key": "product_varient_id",
-											"value": "7",
+											"value": "1",
 											"type": "text"
 										},
 										{
