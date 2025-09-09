@@ -44,7 +44,7 @@ tags:
   - name: Admin > Vendor Store
   - name: Customer
   - name: Customer > Auth
-  - name: Customer > Google Auth
+  - name: Customer > Social Media Auth
   - name: Customer > Site Settings
   - name: Customer > Category
   - name: Customer > Sub Category
@@ -1956,50 +1956,20 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/auth/google/redirect:
-    get:
-      tags:
-        - Customer > Google Auth
-      summary: google auth redirect
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/auth/google/callback:
-    get:
-      tags:
-        - Customer > Google Auth
-      summary: auth google callback
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/auth/google/token:
+  /api/login-google:
     post:
       tags:
-        - Customer > Google Auth
-      summary: auth google token
+        - Customer > Social Media Auth
+      summary: google login
       requestBody:
         content:
-          application/json:
+          multipart/form-data:
             schema:
               type: object
-              example:
-                id_token: eyJhbGciOiJSUzI1NiIsInR5cCI6Ikp
+              properties:
+                token:
+                  type: string
+                  example: e6546rtyrty
       parameters:
         - name: Accept
           in: header
@@ -2861,13 +2831,58 @@ paths:
                               product_image: >-
                                 http://localhost:8000/storage/4/how-ot-make-picture-black-and-white-after.jpg
                         product_varient: null
+  /api/orders/18/payment-intent:
+    post:
+      tags:
+        - Customer > Order
+      summary: stripe payment intent
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  example: e6546rtyrty
+                amount:
+                  type: integer
+                  example: '200'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/stripe/webhook:
     post:
       tags:
         - Customer > Order
       summary: stripe webhook
       requestBody:
-        content: {}
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                Stripe-Signature:
+                  type: string
+                  example: whsec_123456789
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
       responses:
         '200':
           description: Successful response
