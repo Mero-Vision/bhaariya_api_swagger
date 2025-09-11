@@ -3014,6 +3014,118 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "Order",
+					"item": [
+						{
+							"name": "show all orders",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "alexdunne059@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/orders",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show single order data",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "alexdunne059@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/orders/{id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"orders",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		},
@@ -3063,7 +3175,7 @@
 									"formdata": [
 										{
 											"key": "email",
-											"value": "hello@gmail.com",
+											"value": "hanciephago@gmail.com",
 											"type": "text"
 										},
 										{
@@ -3190,7 +3302,7 @@
 									"formdata": [
 										{
 											"key": "email",
-											"value": "nitesh0hamal@gmail.com",
+											"value": "hanciephago@gmail.com",
 											"type": "text"
 										}
 									]
@@ -4422,11 +4534,6 @@
 									"mode": "formdata",
 									"formdata": [
 										{
-											"key": "token",
-											"value": "e6546rtyrty",
-											"type": "text"
-										},
-										{
 											"key": "amount",
 											"value": "200",
 											"type": "text"
@@ -4838,7 +4945,7 @@
 										},
 										{
 											"key": "email",
-											"value": "hanciewanemphago@gmail.com",
+											"value": "alexdunne059@gmail.com",
 											"type": "text"
 										},
 										{
@@ -4858,7 +4965,7 @@
 										},
 										{
 											"key": "store_email",
-											"value": " lagankhel@skulix.com",
+											"value": "alexdunne059@gmail.com",
 											"type": "text"
 										},
 										{
@@ -4987,7 +5094,7 @@
 									"formdata": [
 										{
 											"key": "email",
-											"value": "hanciephago@gmail.com",
+											"value": "alexdunne059@gmail.com",
 											"type": "text"
 										},
 										{
