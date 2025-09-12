@@ -1409,6 +1409,11 @@ paths:
           in: query
           schema:
             type: string
+        - name: is_account_active
+          in: query
+          schema:
+            type: boolean
+          example: 'false'
       responses:
         '200':
           description: Successful response
@@ -1707,6 +1712,78 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/dashboard/sales/last-7-days:
+    get:
+      tags:
+        - Admin > Dashboard
+      summary: sales of last 7 days
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/dashboard/sales/last-30-days:
+    get:
+      tags:
+        - Admin > Dashboard
+      summary: sales of last 30 days
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/dashboard/sales/this-year:
+    get:
+      tags:
+        - Admin > Dashboard
+      summary: sales this year
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/dashboard/sales/last-year:
+    get:
+      tags:
+        - Admin > Dashboard
+      summary: sales of last year
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/vendor-stores:
     get:
       tags:
@@ -1720,6 +1797,16 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: pagination_limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: is_store_verified
+          in: query
+          schema:
+            type: boolean
+          example: 'true'
       responses:
         '200':
           description: Successful response
@@ -1832,6 +1919,14 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: pagination_limit
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -1855,6 +1950,36 @@ paths:
           schema:
             type: string
           required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/orders/20/status:
+    post:
+      tags:
+        - Admin > Order
+      summary: update order status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: shipped
+                _method:
+                  type: string
+                  example: PATCH
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
       responses:
         '200':
           description: Successful response
@@ -2873,7 +2998,7 @@ paths:
                               product_image: >-
                                 http://localhost:8000/storage/4/how-ot-make-picture-black-and-white-after.jpg
                         product_varient: null
-  /api/orders/18/payment-intent:
+  /api/orders/{order_id}/payment-intent:
     post:
       tags:
         - Customer > Order
@@ -2895,6 +3020,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: order_id
+          in: path
+          schema:
+            type: string
+          required: true
       responses:
         '200':
           description: Successful response

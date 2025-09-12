@@ -2243,7 +2243,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/api/admin/customers?pagination_limit=8&search_keyword",
+									"raw": "{{url}}/api/admin/customers?pagination_limit=8&search_keyword&is_account_active=false",
 									"host": [
 										"{{url}}"
 									],
@@ -2260,6 +2260,10 @@
 										{
 											"key": "search_keyword",
 											"value": null
+										},
+										{
+											"key": "is_account_active",
+											"value": "false"
 										}
 									]
 								}
@@ -2784,6 +2788,154 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "sales of last 7 days",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/dashboard/sales/last-7-days",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"dashboard",
+										"sales",
+										"last-7-days"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "sales of last 30 days",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/dashboard/sales/last-30-days",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"dashboard",
+										"sales",
+										"last-30-days"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "sales this year",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/dashboard/sales/this-year",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"dashboard",
+										"sales",
+										"this-year"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "sales of last year",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/dashboard/sales/last-year",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"dashboard",
+										"sales",
+										"last-year"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -2840,7 +2992,7 @@
 									]
 								},
 								"url": {
-									"raw": "{{url}}/api/admin/vendor-stores",
+									"raw": "{{url}}/api/admin/vendor-stores?pagination_limit=10&is_store_verified=true",
 									"host": [
 										"{{url}}"
 									],
@@ -2848,6 +3000,16 @@
 										"api",
 										"admin",
 										"vendor-stores"
+									],
+									"query": [
+										{
+											"key": "pagination_limit",
+											"value": "10"
+										},
+										{
+											"key": "is_store_verified",
+											"value": "true"
+										}
 									]
 								}
 							},
@@ -3058,7 +3220,7 @@
 									]
 								},
 								"url": {
-									"raw": "{{url}}/api/admin/orders",
+									"raw": "{{url}}/api/admin/orders?pagination_limit&status",
 									"host": [
 										"{{url}}"
 									],
@@ -3066,6 +3228,16 @@
 										"api",
 										"admin",
 										"orders"
+									],
+									"query": [
+										{
+											"key": "pagination_limit",
+											"value": null
+										},
+										{
+											"key": "status",
+											"value": null
+										}
 									]
 								}
 							},
@@ -3120,6 +3292,58 @@
 										"admin",
 										"orders",
 										"{id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update order status",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "status",
+											"value": "shipped",
+											"type": "text"
+										},
+										{
+											"key": "_method",
+											"value": "PATCH",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/orders/20/status",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"orders",
+										"20",
+										"status"
 									]
 								}
 							},
@@ -4541,14 +4765,14 @@
 									]
 								},
 								"url": {
-									"raw": "{{url}}/api/orders/18/payment-intent",
+									"raw": "{{url}}/api/orders/{order_id}/payment-intent",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
 										"orders",
-										"18",
+										"{order_id}",
 										"payment-intent"
 									]
 								}
