@@ -43,6 +43,8 @@ tags:
   - name: Admin > Dashboard
   - name: Admin > Vendor Store
   - name: Admin > Order
+  - name: Admin > Product Handling Tag
+  - name: Admin > Product Badge
   - name: Customer
   - name: Customer > Auth
   - name: Customer > Social Media Auth
@@ -68,6 +70,8 @@ tags:
   - name: Vendor > Vendor Store
   - name: Vendor > State
   - name: Vendor > City
+  - name: Vendor > Dashboard
+  - name: Vendor > Product Handling Tags
   - name: Driver
   - name: Driver > Driver
 paths:
@@ -1784,6 +1788,24 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/dashboard/top-selling-products:
+    get:
+      tags:
+        - Admin > Dashboard
+      summary: top selling products
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/vendor-stores:
     get:
       tags:
@@ -1878,6 +1900,14 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: pagination_limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
         - name: vendor_store_id
           in: path
           schema:
@@ -1901,6 +1931,14 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: pagination_limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -1980,6 +2018,60 @@ paths:
           schema:
             type: string
           example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/product-handling-tags:
+    get:
+      tags:
+        - Admin > Product Handling Tag
+      summary: show product handling tags list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: pagination_limit
+          in: query
+          schema:
+            type: integer
+          example: '8'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/product-badges:
+    get:
+      tags:
+        - Admin > Product Badge
+      summary: list product badges
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: pagination_limit
+          in: query
+          schema:
+            type: integer
+          example: '8'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -2112,6 +2204,10 @@ paths:
                 token:
                   type: string
                   example: anajhdndhndhcn
+                password:
+                  type: string
+                password_confirmation:
+                  type: string
       parameters:
         - name: Accept
           in: header
@@ -2180,7 +2276,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/category/{slug}:
+  /api/category/drink:
     get:
       tags:
         - Customer > Category
@@ -2191,11 +2287,35 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: slug
-          in: path
+        - name: search_keyword
+          in: query
           schema:
             type: string
-          required: true
+          example: honey
+        - name: min_price
+          in: query
+          schema:
+            type: integer
+          example: '100'
+        - name: max_price
+          in: query
+          schema:
+            type: integer
+          example: '1000'
+        - name: sort_by
+          in: query
+          schema:
+            type: string
+        - name: brand_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: sub_category_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -3057,6 +3177,34 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/payments/verify/{payment_intent}:
+    post:
+      tags:
+        - Customer > Order
+      summary: verify payment
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: payment_intent
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/vendor-stores:
     get:
       tags:
@@ -3087,6 +3235,29 @@ paths:
             type: string
           example: application/json
         - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/vendor-stores/{id}:
+    delete:
+      tags:
+        - Customer > Vendor Store
+      summary: delete vendor store
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
           in: path
           schema:
             type: string
@@ -3196,7 +3367,7 @@ paths:
                   example: Hancie
                 email:
                   type: string
-                  example: alexdunne059@gmail.com
+                  example: alexdunne05@gmail.com
                 password:
                   type: string
                   example: Password
@@ -3285,7 +3456,7 @@ paths:
               properties:
                 email:
                   type: string
-                  example: alexdunne059@gmail.com
+                  example: hanciewanemphago@gmail.com
                 password:
                   type: string
                   example: Password
@@ -3370,12 +3541,9 @@ paths:
                 brand_id:
                   type: integer
                   example: '1'
-                vendor_store_id:
-                  type: integer
-                  example: '1'
                 name:
                   type: string
-                  example: Organic Honey
+                  example: Wai Wai
                 description:
                   type: string
                   example: Raw organic honey from Himalayas
@@ -3399,10 +3567,13 @@ paths:
                   example: 500 gm
                 sku:
                   type: string
-                  example: DSAFDSH
+                  example: DSAFD
                 product_image[]:
                   type: string
                   format: binary
+                handling_tags[]:
+                  type: integer
+                  example: '2'
       security:
         - bearerAuth: []
       parameters:
@@ -3411,6 +3582,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: vendor-store-id
+          in: header
+          schema:
+            type: integer
+          example: '10'
       responses:
         '200':
           description: Successful response
@@ -3433,7 +3609,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/vendor/products/{product_id}:
+  /api/vendor/products/{id}:
     post:
       tags:
         - Vendor > Product
@@ -3482,10 +3658,13 @@ paths:
                   example: 500 gm
                 sku:
                   type: string
-                  example: DSAFDSH
+                  example: DSAFDSHIO
                 product_image[]:
                   type: string
                   format: binary
+                handling_tags[]:
+                  type: integer
+                  example: '4'
                 _method:
                   type: string
                   example: PUT
@@ -3497,7 +3676,34 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: product_id
+        - name: vendor-store-id
+          in: header
+          schema:
+            type: integer
+          example: '10'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Vendor > Product
+      summary: delete product
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
           in: path
           schema:
             type: string
@@ -3520,29 +3726,6 @@ paths:
           schema:
             type: string
           example: application/json
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/vendor/products/{id}:
-    delete:
-      tags:
-        - Vendor > Product
-      summary: delete product
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: id
-          in: path
-          schema:
-            type: string
-          required: true
       responses:
         '200':
           description: Successful response
@@ -3711,6 +3894,56 @@ paths:
           schema:
             type: integer
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vendor/dashboard:
+    get:
+      tags:
+        - Vendor > Dashboard
+      summary: show vendor dashboard
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: vendor-store-id
+          in: header
+          schema:
+            type: integer
+          example: '10'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vendor/product-handling-tags:
+    get:
+      tags:
+        - Vendor > Product Handling Tags
+      summary: list product handling tags
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: pagination_limit
+          in: query
+          schema:
+            type: integer
+          example: '8'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response

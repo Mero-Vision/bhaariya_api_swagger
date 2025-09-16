@@ -2936,6 +2936,42 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "top selling products",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/dashboard/top-selling-products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"dashboard",
+										"top-selling-products"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -3125,7 +3161,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/api/admin/vendor-store-products/{vendor_store_id}",
+									"raw": "{{url}}/api/admin/vendor-store-products/{vendor_store_id}?pagination_limit&search_keyword",
 									"host": [
 										"{{url}}"
 									],
@@ -3134,6 +3170,16 @@
 										"admin",
 										"vendor-store-products",
 										"{vendor_store_id}"
+									],
+									"query": [
+										{
+											"key": "pagination_limit",
+											"value": null
+										},
+										{
+											"key": "search_keyword",
+											"value": null
+										}
 									]
 								}
 							},
@@ -3161,7 +3207,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/api/admin/vendor-store-users/10",
+									"raw": "{{url}}/api/admin/vendor-store-users/10?pagination_limit&search_keyword",
 									"host": [
 										"{{url}}"
 									],
@@ -3170,6 +3216,16 @@
 										"admin",
 										"vendor-store-users",
 										"10"
+									],
+									"query": [
+										{
+											"key": "pagination_limit",
+											"value": null
+										},
+										{
+											"key": "search_keyword",
+											"value": null
+										}
 									]
 								}
 							},
@@ -3344,6 +3400,106 @@
 										"orders",
 										"20",
 										"status"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Product Handling Tag",
+					"item": [
+						{
+							"name": "show product handling tags list",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/product-handling-tags?pagination_limit=8&search_keyword",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"product-handling-tags"
+									],
+									"query": [
+										{
+											"key": "pagination_limit",
+											"value": "8"
+										},
+										{
+											"key": "search_keyword",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Product Badge",
+					"item": [
+						{
+							"name": "list product badges",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/product-badges?pagination_limit=8&search_keyword",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"product-badges"
+									],
+									"query": [
+										{
+											"key": "pagination_limit",
+											"value": "8"
+										},
+										{
+											"key": "search_keyword",
+											"value": null
+										}
 									]
 								}
 							},
@@ -3562,6 +3718,16 @@
 											"key": "token",
 											"value": "anajhdndhndhcn",
 											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "",
+											"type": "text"
 										}
 									]
 								},
@@ -3687,14 +3853,44 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/api/category/{slug}",
+									"raw": "{{url}}/api/category/drink?search_keyword=honey&min_price=100&max_price=1000&sort_by&brand_id=1&sub_category_id=1&sort_by=price_asc or price_desc",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
 										"category",
-										"{slug}"
+										"drink"
+									],
+									"query": [
+										{
+											"key": "search_keyword",
+											"value": "honey"
+										},
+										{
+											"key": "min_price",
+											"value": "100"
+										},
+										{
+											"key": "max_price",
+											"value": "1000"
+										},
+										{
+											"key": "sort_by",
+											"value": null
+										},
+										{
+											"key": "brand_id",
+											"value": "1"
+										},
+										{
+											"key": "sub_category_id",
+											"value": "1"
+										},
+										{
+											"key": "sort_by",
+											"value": "price_asc or price_desc"
+										}
 									]
 								}
 							},
@@ -4916,6 +5112,46 @@
 									"body": "{\n    \"data\": [\n        {\n            \"id\": 3,\n            \"user_id\": 1,\n            \"order_number\": \"ORD2025020402\",\n            \"shipping_detail_id\": 1,\n            \"subtotal\": \"200.00\",\n            \"delivery_charge\": \"200.00\",\n            \"discount\": \"200.00\",\n            \"tax\": \"200.00\",\n            \"total_amount\": \"200.00\",\n            \"note\": \"hy\",\n            \"customer\": {\n                \"id\": 1,\n                \"name\": \"Admin\",\n                \"email\": \"info@cartyne.com\",\n                \"email_verified_at\": \"2025-01-30T18:21:25.000000Z\",\n                \"roles\": [\n                    \"admin\"\n                ],\n                \"created_at\": \"2025-01-30 06:21 pm\",\n                \"updated_at\": \"2025-01-30 06:21 pm\"\n            },\n            \"shipping_details\": null,\n            \"order_items\": [\n                {\n                    \"id\": 2,\n                    \"user_id\": 1,\n                    \"order_id\": 3,\n                    \"product_id\": 2,\n                    \"product_variant_id\": null,\n                    \"quantity\": 2,\n                    \"price\": \"2.00\",\n                    \"subtotal\": \"4.00\",\n                    \"product\": {\n                        \"id\": 2,\n                        \"category_id\": 1,\n                        \"brand_id\": 1,\n                        \"name\": \"Mobile\",\n                        \"slug\": \"mobile\",\n                        \"description\": \"dfdgfg\",\n                        \"selling_price\": \"200.00\",\n                        \"cross_price\": \"300.00\",\n                        \"unit_price\": \"100.00\",\n                        \"stock_quantity\": \"500.00\",\n                        \"sku\": \"DGFT56\",\n                        \"allow_negative_stock\": 1,\n                        \"has_varient\": 1,\n                        \"product_weight\": null,\n                        \"status\": \"active\",\n                        \"created_at\": \"2025-02-01T14:24:14.000000Z\",\n                        \"updated_at\": \"2025-02-01T14:24:14.000000Z\",\n                        \"product_images\": [\n                            {\n                                \"id\": 3,\n                                \"product_image\": \"http://localhost:8000/storage/4/how-ot-make-picture-black-and-white-after.jpg\"\n                            }\n                        ]\n                    },\n                    \"product_varient\": {\n                        \"id\": 2,\n                        \"product_id\": 2,\n                        \"size\": \"XXL\",\n                        \"color\": \"RED\",\n                        \"selling_price\": \"200.00\",\n                        \"cross_price\": \"300.00\",\n                        \"unit_price\": \"100.00\",\n                        \"stock_quantity\": \"500.00\",\n                        \"sku\": \"GFG67\",\n                        \"created_at\": \"2025-02-01T14:24:14.000000Z\",\n                        \"updated_at\": \"2025-02-01T14:24:14.000000Z\",\n                        \"product_varient_images\": [\n                            {\n                                \"id\": 2,\n                                \"product_image\": \"http://localhost:8000/storage/3/how-ot-make-picture-black-and-white-after.jpg\"\n                            }\n                        ]\n                    }\n                }\n            ]\n        },\n        {\n            \"id\": 1,\n            \"user_id\": 1,\n            \"order_number\": \"ORD2025020401\",\n            \"shipping_detail_id\": 1,\n            \"subtotal\": \"200.00\",\n            \"delivery_charge\": \"200.00\",\n            \"discount\": \"200.00\",\n            \"tax\": \"200.00\",\n            \"total_amount\": \"200.00\",\n            \"note\": \"hy\",\n            \"customer\": {\n                \"id\": 1,\n                \"name\": \"Admin\",\n                \"email\": \"info@cartyne.com\",\n                \"email_verified_at\": \"2025-01-30T18:21:25.000000Z\",\n                \"roles\": [\n                    \"admin\"\n                ],\n                \"created_at\": \"2025-01-30 06:21 pm\",\n                \"updated_at\": \"2025-01-30 06:21 pm\"\n            },\n            \"shipping_details\": null,\n            \"order_items\": [\n                {\n                    \"id\": 1,\n                    \"user_id\": 1,\n                    \"order_id\": 1,\n                    \"product_id\": 2,\n                    \"product_variant_id\": null,\n                    \"quantity\": 2,\n                    \"price\": \"2.00\",\n                    \"subtotal\": \"4.00\",\n                    \"product\": {\n                        \"id\": 2,\n                        \"category_id\": 1,\n                        \"brand_id\": 1,\n                        \"name\": \"Mobile\",\n                        \"slug\": \"mobile\",\n                        \"description\": \"dfdgfg\",\n                        \"selling_price\": \"200.00\",\n                        \"cross_price\": \"300.00\",\n                        \"unit_price\": \"100.00\",\n                        \"stock_quantity\": \"500.00\",\n                        \"sku\": \"DGFT56\",\n                        \"allow_negative_stock\": 1,\n                        \"has_varient\": 1,\n                        \"product_weight\": null,\n                        \"status\": \"active\",\n                        \"created_at\": \"2025-02-01T14:24:14.000000Z\",\n                        \"updated_at\": \"2025-02-01T14:24:14.000000Z\",\n                        \"product_images\": [\n                            {\n                                \"id\": 3,\n                                \"product_image\": \"http://localhost:8000/storage/4/how-ot-make-picture-black-and-white-after.jpg\"\n                            }\n                        ]\n                    },\n                    \"product_varient\": null\n                }\n            ]\n        }\n    ]\n}"
 								}
 							]
+						},
+						{
+							"name": "verify payment",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/payments/verify/{payment_intent}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"payments",
+										"verify",
+										"{payment_intent}"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -4976,6 +5212,42 @@
 										"api",
 										"vendor-stores",
 										"{slug}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete vendor store",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/vendor-stores/{id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"vendor-stores",
+										"{id}"
 									]
 								}
 							},
@@ -5169,7 +5441,7 @@
 										},
 										{
 											"key": "email",
-											"value": "alexdunne059@gmail.com",
+											"value": "alexdunne05@gmail.com",
 											"type": "text"
 										},
 										{
@@ -5318,7 +5590,7 @@
 									"formdata": [
 										{
 											"key": "email",
-											"value": "alexdunne059@gmail.com",
+											"value": "hanciewanemphago@gmail.com",
 											"type": "text"
 										},
 										{
@@ -5436,6 +5708,11 @@
 										"key": "Accept",
 										"value": "application/json",
 										"type": "text"
+									},
+									{
+										"key": "vendor-store-id",
+										"value": "10",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -5457,13 +5734,8 @@
 											"type": "text"
 										},
 										{
-											"key": "vendor_store_id",
-											"value": "1",
-											"type": "text"
-										},
-										{
 											"key": "name",
-											"value": "Organic Honey",
+											"value": "Wai Wai",
 											"type": "text"
 										},
 										{
@@ -5503,13 +5775,23 @@
 										},
 										{
 											"key": "sku",
-											"value": "DSAFDSH",
+											"value": "DSAFD",
 											"type": "text"
 										},
 										{
 											"key": "product_image[]",
 											"type": "file",
-											"src": []
+											"src": "/Users/hanciephago/Downloads/Black and Red Simple Car Icon Industrial Logo (6).png"
+										},
+										{
+											"key": "handling_tags[]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "handling_tags[]",
+											"value": "2",
+											"type": "text"
 										}
 									]
 								},
@@ -5545,6 +5827,11 @@
 									{
 										"key": "Accept",
 										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "vendor-store-id",
+										"value": "10",
 										"type": "text"
 									}
 								],
@@ -5613,13 +5900,18 @@
 										},
 										{
 											"key": "sku",
-											"value": "DSAFDSH",
+											"value": "DSAFDSHIO",
 											"type": "text"
 										},
 										{
 											"key": "product_image[]",
 											"type": "file",
 											"src": "/C:/Users/user/Pictures/Desktop Backgrounds/Image 4.jpg"
+										},
+										{
+											"key": "handling_tags[]",
+											"value": "4",
+											"type": "text"
 										},
 										{
 											"key": "_method",
@@ -5629,7 +5921,7 @@
 									]
 								},
 								"url": {
-									"raw": "{{url}}/api/vendor/products/{product_id}",
+									"raw": "{{url}}/api/vendor/products/{id}",
 									"host": [
 										"{{url}}"
 									],
@@ -5637,7 +5929,7 @@
 										"api",
 										"vendor",
 										"products",
-										"{product_id}"
+										"{id}"
 									]
 								}
 							},
@@ -6077,6 +6369,101 @@
 										"api",
 										"vendor",
 										"city"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Dashboard",
+					"item": [
+						{
+							"name": "show vendor dashboard",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "vendor-store-id",
+										"value": "10",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/vendor/dashboard",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vendor",
+										"dashboard"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Product Handling Tags",
+					"item": [
+						{
+							"name": "list product handling tags",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/vendor/product-handling-tags?pagination_limit=8&search_keyword",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vendor",
+										"product-handling-tags"
+									],
+									"query": [
+										{
+											"key": "pagination_limit",
+											"value": "8"
+										},
+										{
+											"key": "search_keyword",
+											"value": null
+										}
 									]
 								}
 							},
