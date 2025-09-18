@@ -1276,6 +1276,131 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "store product",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "vendor-store-id",
+										"value": "10",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "category_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "sub_category_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "brand_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Wai Wai",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Raw organic honey from Himalayas",
+											"type": "text"
+										},
+										{
+											"key": "short_description",
+											"value": "100% pure and organic",
+											"type": "text"
+										},
+										{
+											"key": "selling_price",
+											"value": "1000",
+											"type": "text"
+										},
+										{
+											"key": "cross_price",
+											"value": "1500",
+											"type": "text"
+										},
+										{
+											"key": "unit_price",
+											"value": "590",
+											"type": "text"
+										},
+										{
+											"key": "stock_quantity",
+											"value": "200",
+											"type": "text"
+										},
+										{
+											"key": "product_weight",
+											"value": "500 gm",
+											"type": "text"
+										},
+										{
+											"key": "sku",
+											"value": "DSAFD",
+											"type": "text"
+										},
+										{
+											"key": "product_image[]",
+											"type": "file",
+											"src": "/Users/hanciephago/Downloads/logo.png"
+										},
+										{
+											"key": "handling_tags[]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "handling_tags[]",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "vendor_store_id",
+											"value": "10",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"products"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -3703,6 +3828,327 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "show single campaign with products",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/campaigns/{id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"campaigns",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update campaign data",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Dashain Mega Sale",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Special deals for Dashain festival.",
+											"type": "text"
+										},
+										{
+											"key": "theme_color",
+											"value": "#FF5733",
+											"type": "text"
+										},
+										{
+											"key": "start_date",
+											"value": "2025-09-20",
+											"type": "text"
+										},
+										{
+											"key": "end_date",
+											"value": "2025-09-30",
+											"type": "text"
+										},
+										{
+											"key": "type",
+											"value": "festival",
+											"type": "text"
+										},
+										{
+											"key": "_method",
+											"value": "PUT",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/campaigns/{id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"campaigns",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete campaign and its products",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/campaigns/{id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"campaigns",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Product Units",
+					"item": [
+						{
+							"name": "show all product units",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "category_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "sub_category_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "brand_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Soap",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Soap",
+											"type": "text"
+										},
+										{
+											"key": "short_description",
+											"value": "100% pure and organic",
+											"type": "text"
+										},
+										{
+											"key": "selling_price",
+											"value": "1000",
+											"type": "text"
+										},
+										{
+											"key": "cross_price",
+											"value": "1500",
+											"type": "text"
+										},
+										{
+											"key": "unit_price",
+											"value": "590",
+											"type": "text"
+										},
+										{
+											"key": "stock_quantity",
+											"value": "200",
+											"type": "text"
+										},
+										{
+											"key": "product_weight",
+											"value": "500 gm",
+											"type": "text"
+										},
+										{
+											"key": "sku",
+											"value": "DSAFDA2",
+											"type": "text"
+										},
+										{
+											"key": "product_image[]",
+											"type": "file",
+											"src": "/Users/hanciephago/Downloads/Black and Red Simple Car Icon Industrial Logo (6).png"
+										},
+										{
+											"key": "handling_tags[]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "handling_tags[]",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "product_unit_id",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/product-units?pagination_limit=20&search_keyword",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"product-units"
+									],
+									"query": [
+										{
+											"key": "pagination_limit",
+											"value": "20"
+										},
+										{
+											"key": "search_keyword",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Campaign Products",
+					"item": [
+						{
+							"name": "store campaign product",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"products\": [37,38,39]\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/campaigns/products/{campaign_id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"campaigns",
+										"products",
+										"{campaign_id}"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				}
@@ -5934,12 +6380,12 @@
 										},
 										{
 											"key": "name",
-											"value": "Wai Wai",
+											"value": "Soap",
 											"type": "text"
 										},
 										{
 											"key": "description",
-											"value": "Raw organic honey from Himalayas",
+											"value": "Soap",
 											"type": "text"
 										},
 										{
@@ -5974,7 +6420,7 @@
 										},
 										{
 											"key": "sku",
-											"value": "DSAFD",
+											"value": "DSAFDA2",
 											"type": "text"
 										},
 										{
@@ -5989,6 +6435,11 @@
 										},
 										{
 											"key": "handling_tags[]",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "product_unit_id",
 											"value": "2",
 											"type": "text"
 										}
@@ -6837,6 +7288,144 @@
 										{
 											"key": "pagination_limit",
 											"value": "8"
+										},
+										{
+											"key": "search_keyword",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Product Units",
+					"item": [
+						{
+							"name": "show all product units",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "category_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "sub_category_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "brand_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Soap",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Soap",
+											"type": "text"
+										},
+										{
+											"key": "short_description",
+											"value": "100% pure and organic",
+											"type": "text"
+										},
+										{
+											"key": "selling_price",
+											"value": "1000",
+											"type": "text"
+										},
+										{
+											"key": "cross_price",
+											"value": "1500",
+											"type": "text"
+										},
+										{
+											"key": "unit_price",
+											"value": "590",
+											"type": "text"
+										},
+										{
+											"key": "stock_quantity",
+											"value": "200",
+											"type": "text"
+										},
+										{
+											"key": "product_weight",
+											"value": "500 gm",
+											"type": "text"
+										},
+										{
+											"key": "sku",
+											"value": "DSAFDA2",
+											"type": "text"
+										},
+										{
+											"key": "product_image[]",
+											"type": "file",
+											"src": "/Users/hanciephago/Downloads/Black and Red Simple Car Icon Industrial Logo (6).png"
+										},
+										{
+											"key": "handling_tags[]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "handling_tags[]",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "product_unit_id",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/vendor/product-units?pagination_limit=20&search_keyword",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vendor",
+										"product-units"
+									],
+									"query": [
+										{
+											"key": "pagination_limit",
+											"value": "20"
 										},
 										{
 											"key": "search_keyword",

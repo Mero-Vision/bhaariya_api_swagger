@@ -46,6 +46,8 @@ tags:
   - name: Admin > Product Handling Tag
   - name: Admin > Product Badge
   - name: Admin > Campaign
+  - name: Admin > Product Units
+  - name: Admin > Campaign Products
   - name: Customer
   - name: Customer > Auth
   - name: Customer > Social Media Auth
@@ -74,6 +76,7 @@ tags:
   - name: Vendor > Dashboard
   - name: Vendor > Order
   - name: Vendor > Product Handling Tags
+  - name: Vendor > Product Units
   - name: Driver
   - name: Driver > Driver
 paths:
@@ -706,6 +709,79 @@ paths:
           schema:
             type: string
           example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Admin > Products
+      summary: store product
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                category_id:
+                  type: integer
+                  example: '1'
+                sub_category_id:
+                  type: integer
+                  example: '1'
+                brand_id:
+                  type: integer
+                  example: '1'
+                name:
+                  type: string
+                  example: Wai Wai
+                description:
+                  type: string
+                  example: Raw organic honey from Himalayas
+                short_description:
+                  type: string
+                  example: 100% pure and organic
+                selling_price:
+                  type: integer
+                  example: '1000'
+                cross_price:
+                  type: integer
+                  example: '1500'
+                unit_price:
+                  type: integer
+                  example: '590'
+                stock_quantity:
+                  type: integer
+                  example: '200'
+                product_weight:
+                  type: string
+                  example: 500 gm
+                sku:
+                  type: string
+                  example: DSAFD
+                product_image[]:
+                  type: string
+                  format: binary
+                handling_tags[]:
+                  type: integer
+                  example: '2'
+                vendor_store_id:
+                  type: integer
+                  example: '10'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: vendor-store-id
+          in: header
+          schema:
+            type: integer
+          example: '10'
       responses:
         '200':
           description: Successful response
@@ -2194,6 +2270,153 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/campaigns/{id}:
+    get:
+      tags:
+        - Admin > Campaign
+      summary: show single campaign with products
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Admin > Campaign
+      summary: update campaign data
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Dashain Mega Sale
+                description:
+                  type: string
+                  example: Special deals for Dashain festival.
+                theme_color:
+                  type: string
+                  example: '#FF5733'
+                start_date:
+                  type: string
+                  example: '2025-09-20'
+                end_date:
+                  type: string
+                  example: '2025-09-30'
+                type:
+                  type: string
+                  example: festival
+                _method:
+                  type: string
+                  example: PUT
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Admin > Campaign
+      summary: delete campaign and its products
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/product-units:
+    get:
+      tags:
+        - Admin > Product Units
+      summary: show all product units
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: pagination_limit
+          in: query
+          schema:
+            type: integer
+          example: '20'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/campaigns/products/{campaign_id}:
+    post:
+      tags:
+        - Admin > Campaign Products
+      summary: store campaign product
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                products:
+                  - 37
+                  - 38
+                  - 39
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: campaign_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/login:
     post:
       tags:
@@ -3660,10 +3883,10 @@ paths:
                   example: '1'
                 name:
                   type: string
-                  example: Wai Wai
+                  example: Soap
                 description:
                   type: string
-                  example: Raw organic honey from Himalayas
+                  example: Soap
                 short_description:
                   type: string
                   example: 100% pure and organic
@@ -3684,11 +3907,14 @@ paths:
                   example: 500 gm
                 sku:
                   type: string
-                  example: DSAFD
+                  example: DSAFDA2
                 product_image[]:
                   type: string
                   format: binary
                 handling_tags[]:
+                  type: integer
+                  example: '2'
+                product_unit_id:
                   type: integer
                   example: '2'
       security:
@@ -4141,6 +4367,33 @@ paths:
           schema:
             type: integer
           example: '8'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vendor/product-units:
+    get:
+      tags:
+        - Vendor > Product Units
+      summary: show all product units
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: pagination_limit
+          in: query
+          schema:
+            type: integer
+          example: '20'
         - name: search_keyword
           in: query
           schema:
