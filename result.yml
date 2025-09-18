@@ -48,6 +48,7 @@ tags:
   - name: Admin > Campaign
   - name: Admin > Product Units
   - name: Admin > Campaign Products
+  - name: Admin > DB Backup
   - name: Customer
   - name: Customer > Auth
   - name: Customer > Social Media Auth
@@ -2412,6 +2413,26 @@ paths:
           schema:
             type: string
           required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/db-backup:
+    post:
+      tags:
+        - Admin > DB Backup
+      summary: download db backup
+      requestBody:
+        content: {}
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
       responses:
         '200':
           description: Successful response

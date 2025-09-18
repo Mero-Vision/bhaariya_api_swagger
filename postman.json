@@ -4151,6 +4151,46 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "DB Backup",
+					"item": [
+						{
+							"name": "download db backup",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/db-backup",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"db-backup"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		},
