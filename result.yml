@@ -49,6 +49,7 @@ tags:
   - name: Admin > Product Units
   - name: Admin > Campaign Products
   - name: Admin > DB Backup
+  - name: Admin > Order Assignments
   - name: Customer
   - name: Customer > Auth
   - name: Customer > Social Media Auth
@@ -583,6 +584,38 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/sub-categories/{id}/toggle-popular:
+    post:
+      tags:
+        - Admin > Sub Category
+      summary: update popular sub category status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                is_popular:
+                  type: boolean
+                  example: 'true'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/brand:
     post:
       tags:
@@ -697,6 +730,38 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/brand/{id}/toggle-featured-brand:
+    post:
+      tags:
+        - Admin > Brand
+      summary: update brand status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                is_featured:
+                  type: boolean
+                  example: 'true'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/products:
     get:
       tags:
@@ -710,6 +775,19 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: pagination_limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+          example: active
       responses:
         '200':
           description: Successful response
@@ -718,7 +796,7 @@ paths:
     post:
       tags:
         - Admin > Products
-      summary: store product
+      summary: update product
       requestBody:
         content:
           multipart/form-data:
@@ -736,7 +814,7 @@ paths:
                   example: '1'
                 name:
                   type: string
-                  example: Wai Wai
+                  example: Laptop
                 description:
                   type: string
                   example: Raw organic honey from Himalayas
@@ -760,7 +838,7 @@ paths:
                   example: 500 gm
                 sku:
                   type: string
-                  example: DSAFD
+                  example: DSAFDSD
                 product_image[]:
                   type: string
                   format: binary
@@ -769,7 +847,10 @@ paths:
                   example: '2'
                 vendor_store_id:
                   type: integer
-                  example: '10'
+                  example: '1'
+                _method:
+                  type: string
+                  example: PUT
       security:
         - bearerAuth: []
       parameters:
@@ -897,6 +978,28 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/short-products:
+    get:
+      tags:
+        - Admin > Products
+      summary: show short product list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/vendors:
     get:
       tags:
@@ -1001,6 +1104,41 @@ paths:
             type: string
           example: application/json
         - name: vendor_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/change-vendor-password/{vendor_user_id}:
+    post:
+      tags:
+        - Admin > Vendor
+      summary: change vendor password
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  example: Password
+                password_confirmation:
+                  type: string
+                  example: Password
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: vendor_user_id
           in: path
           schema:
             type: string
@@ -2418,6 +2556,29 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/campaigns/products/{id}:
+    delete:
+      tags:
+        - Admin > Campaign Products
+      summary: delete campaign products
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/db-backup:
     post:
       tags:
@@ -2425,6 +2586,33 @@ paths:
       summary: download db backup
       requestBody:
         content: {}
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/orders/21/send-request:
+    post:
+      tags:
+        - Admin > Order Assignments
+      summary: order request send to driver
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                driver_id:
+                  type: integer
+                  example: '1'
       security:
         - bearerAuth: []
       parameters:
@@ -2682,6 +2870,24 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/short-category:
+    get:
+      tags:
+        - Customer > Category
+      summary: show all category in short
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/sub-category:
     get:
       tags:
@@ -2723,6 +2929,16 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/popular-category:
+    get:
+      tags:
+        - Customer > Sub Category
+      summary: show all popular category
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/brand:
     get:
       tags:
@@ -2757,6 +2973,16 @@ paths:
           schema:
             type: string
           required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/featured-brands:
+    get:
+      tags:
+        - Customer > Brand
+      summary: show featured brands
       responses:
         '200':
           description: Successful response
@@ -3595,6 +3821,32 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: sub_category_id
+          in: query
+          schema:
+            type: string
+        - name: brand_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: min_price
+          in: query
+          schema:
+            type: string
+        - name: max_price
+          in: query
+          schema:
+            type: string
+        - name: sort
+          in: query
+          schema:
+            type: string
+          example: low_to_high and high_to_low
         - name: slug
           in: path
           schema:

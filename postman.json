@@ -184,7 +184,7 @@
 										{
 											"key": "logo",
 											"type": "file",
-											"src": "/C:/Users/Hanci/Downloads/473363709_122171439998267814_1702870369622799843_n.jpg"
+											"src": "/Users/hanciephago/Downloads/Black and Red Simple Car Icon Industrial Logo (6).png"
 										},
 										{
 											"key": "address",
@@ -877,6 +877,53 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "update popular sub category status",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "is_popular",
+											"value": "true",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/sub-categories/{id}/toggle-popular",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"sub-categories",
+										"{id}",
+										"toggle-popular"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -1069,6 +1116,53 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "update brand status",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "is_featured",
+											"value": "true",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/brand/{id}/toggle-featured-brand",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"brand",
+										"{id}",
+										"toggle-featured-brand"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -1097,7 +1191,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/api/admin/products",
+									"raw": "{{url}}/api/admin/products?pagination_limit&search_keyword&status=active",
 									"host": [
 										"{{url}}"
 									],
@@ -1105,6 +1199,20 @@
 										"api",
 										"admin",
 										"products"
+									],
+									"query": [
+										{
+											"key": "pagination_limit",
+											"value": null
+										},
+										{
+											"key": "search_keyword",
+											"value": null
+										},
+										{
+											"key": "status",
+											"value": "active"
+										}
 									]
 								}
 							},
@@ -1323,7 +1431,7 @@
 										},
 										{
 											"key": "name",
-											"value": "Wai Wai",
+											"value": "Laptop",
 											"type": "text"
 										},
 										{
@@ -1363,13 +1471,13 @@
 										},
 										{
 											"key": "sku",
-											"value": "DSAFD",
+											"value": "DSAFDSD",
 											"type": "text"
 										},
 										{
 											"key": "product_image[]",
 											"type": "file",
-											"src": "/Users/hanciephago/Downloads/logo.png"
+											"src": "/Users/hanciephago/Downloads/Black and Red Simple Car Icon Industrial Logo (6).png"
 										},
 										{
 											"key": "handling_tags[]",
@@ -1397,6 +1505,182 @@
 										"api",
 										"admin",
 										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update product",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "vendor-store-id",
+										"value": "10",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "category_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "sub_category_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "brand_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Laptop",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Raw organic honey from Himalayas",
+											"type": "text"
+										},
+										{
+											"key": "short_description",
+											"value": "100% pure and organic",
+											"type": "text"
+										},
+										{
+											"key": "selling_price",
+											"value": "1000",
+											"type": "text"
+										},
+										{
+											"key": "cross_price",
+											"value": "1500",
+											"type": "text"
+										},
+										{
+											"key": "unit_price",
+											"value": "590",
+											"type": "text"
+										},
+										{
+											"key": "stock_quantity",
+											"value": "200",
+											"type": "text"
+										},
+										{
+											"key": "product_weight",
+											"value": "500 gm",
+											"type": "text"
+										},
+										{
+											"key": "sku",
+											"value": "DSAFDSD",
+											"type": "text"
+										},
+										{
+											"key": "product_image[]",
+											"type": "file",
+											"src": "/Users/hanciephago/Downloads/Black and Red Simple Car Icon Industrial Logo (6).png"
+										},
+										{
+											"key": "handling_tags[]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "handling_tags[]",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "vendor_store_id",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "vendor_store_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "_method",
+											"value": "PUT",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show short product list",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/short-products?search_keyword",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"short-products"
+									],
+									"query": [
+										{
+											"key": "search_keyword",
+											"value": null
+										}
 									]
 								}
 							},
@@ -1576,6 +1860,57 @@
 										"admin",
 										"vendor-update-status",
 										"{vendor_id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "change vendor password",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "password",
+											"value": "Password",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "Password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/change-vendor-password/{vendor_user_id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"change-vendor-password",
+										"{vendor_user_id}"
 									]
 								}
 							},
@@ -4149,6 +4484,43 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "delete campaign products",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/campaigns/products/{id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"campaigns",
+										"products",
+										"{id}"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -4185,6 +4557,58 @@
 										"api",
 										"admin",
 										"db-backup"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Order Assignments",
+					"item": [
+						{
+							"name": "order request send to driver",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "driver_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/orders/21/send-request",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"orders",
+										"21",
+										"send-request"
 									]
 								}
 							},
@@ -4580,6 +5004,40 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "show all category in short",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/short-category",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"short-category"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -4654,6 +5112,24 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "show all popular category",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/popular-category",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"popular-category"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -4714,6 +5190,24 @@
 										"api",
 										"brand",
 										"{slug}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show featured brands",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/featured-brands",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"featured-brands"
 									]
 								}
 							},
@@ -5889,7 +6383,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/api/vendor-stores/{slug}",
+									"raw": "{{url}}/api/vendor-stores/{slug}?search_keyword=&sub_category_id=&brand_id=1&min_price&max_price&sort=low_to_high and high_to_low",
 									"host": [
 										"{{url}}"
 									],
@@ -5897,6 +6391,32 @@
 										"api",
 										"vendor-stores",
 										"{slug}"
+									],
+									"query": [
+										{
+											"key": "search_keyword",
+											"value": ""
+										},
+										{
+											"key": "sub_category_id",
+											"value": ""
+										},
+										{
+											"key": "brand_id",
+											"value": "1"
+										},
+										{
+											"key": "min_price",
+											"value": null
+										},
+										{
+											"key": "max_price",
+											"value": null
+										},
+										{
+											"key": "sort",
+											"value": "low_to_high and high_to_low"
+										}
 									]
 								}
 							},
