@@ -23,6 +23,9 @@ components:
     bearerAuth:
       type: http
       scheme: bearer
+    noauthAuth:
+      type: http
+      scheme: noauth
 tags:
   - name: Admin
   - name: Admin > Auth
@@ -50,6 +53,7 @@ tags:
   - name: Admin > Campaign Products
   - name: Admin > DB Backup
   - name: Admin > Order Assignments
+  - name: Admin > Settings
   - name: Customer
   - name: Customer > Auth
   - name: Customer > Social Media Auth
@@ -66,6 +70,7 @@ tags:
   - name: Customer > Contact Us
   - name: Customer > News Letter
   - name: Customer > Faq
+  - name: Customer > Settings
   - name: Vendor
   - name: Vendor > Auth
   - name: Vendor > Product
@@ -79,6 +84,8 @@ tags:
   - name: Vendor > Order
   - name: Vendor > Product Handling Tags
   - name: Vendor > Product Units
+  - name: Vendor > POS products
+  - name: Vendor > Settings
   - name: Driver
   - name: Driver > Driver
 paths:
@@ -1823,6 +1830,11 @@ paths:
           in: query
           schema:
             type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+          example: ' pending active inactive suspended'
       responses:
         '200':
           description: Successful response
@@ -1939,6 +1951,67 @@ paths:
           schema:
             type: string
           example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/driver/{id}/status:
+    post:
+      tags:
+        - Admin > Driver
+      summary: update driver status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: active
+                _method:
+                  type: string
+                  example: PATCH
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/available-drivers:
+    get:
+      tags:
+        - Admin > Driver
+      summary: show all availbale drivers
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: pagination_limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -2599,7 +2672,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/admin/orders/21/send-request:
+  /api/admin/orders/{order_id}/send-request:
     post:
       tags:
         - Admin > Order Assignments
@@ -2613,6 +2686,94 @@ paths:
                 driver_id:
                   type: integer
                   example: '1'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: order_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/orders/21/assign-driver:
+    post:
+      tags:
+        - Admin > Order Assignments
+      summary: assignment driver to confirmed order
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                driver_id:
+                  type: integer
+                  example: '1'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/settings:
+    post:
+      tags:
+        - Admin > Settings
+      summary: store settings
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                per_mile_charge:
+                  type: integer
+                  example: '10'
+                currency_code:
+                  type: string
+                  example: USD
+                currency_symbol:
+                  type: string
+                  example: $
+                service_charge_below_3_miles_percent:
+                  type: integer
+                  example: '9'
+                service_charge_above_3_miles_percent:
+                  type: integer
+                  example: '20'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Settings
+      summary: show all settings
       security:
         - bearerAuth: []
       parameters:
@@ -3964,6 +4125,24 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/settings:
+    get:
+      tags:
+        - Customer > Settings
+      summary: show settings data
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/vendor/signup:
     post:
       tags:
@@ -4671,6 +4850,55 @@ paths:
           in: query
           schema:
             type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vendor/pos-products:
+    get:
+      tags:
+        - Vendor > POS products
+      summary: show all pos product list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: vendor-store-id
+          in: header
+          schema:
+            type: integer
+          example: '10'
+        - name: pagination_limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vendor/settings:
+    get:
+      tags:
+        - Vendor > Settings
+      summary: show settings data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
       responses:
         '200':
           description: Successful response
