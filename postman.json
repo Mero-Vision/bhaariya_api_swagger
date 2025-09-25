@@ -3013,7 +3013,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/api/admin/driver?pagination_limit=8&search_keyword",
+									"raw": "{{url}}/api/admin/driver?pagination_limit=8&search_keyword&status= pending active inactive suspended",
 									"host": [
 										"{{url}}"
 									],
@@ -3030,6 +3030,10 @@
 										{
 											"key": "search_keyword",
 											"value": null
+										},
+										{
+											"key": "status",
+											"value": " pending active inactive suspended"
 										}
 									]
 								}
@@ -3247,6 +3251,103 @@
 										"api",
 										"admin",
 										"verify-drivers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update driver status",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "status",
+											"value": "active",
+											"type": "text"
+										},
+										{
+											"key": "_method",
+											"value": "PATCH",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/driver/{id}/status",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"driver",
+										"{id}",
+										"status"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show all availbale drivers",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/available-drivers?pagination_limit&search_keyword",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"available-drivers"
+									],
+									"query": [
+										{
+											"key": "pagination_limit",
+											"value": null
+										},
+										{
+											"key": "search_keyword",
+											"value": null
+										}
 									]
 								}
 							},
@@ -4599,7 +4700,54 @@
 									]
 								},
 								"url": {
-									"raw": "{{url}}/api/admin/orders/21/send-request",
+									"raw": "{{url}}/api/admin/orders/{order_id}/send-request",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"orders",
+										"{order_id}",
+										"send-request"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "assignment driver to confirmed order",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "driver_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/orders/21/assign-driver",
 									"host": [
 										"{{url}}"
 									],
@@ -4608,7 +4756,112 @@
 										"admin",
 										"orders",
 										"21",
-										"send-request"
+										"assign-driver"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Settings",
+					"item": [
+						{
+							"name": "store settings",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "per_mile_charge",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "currency_code",
+											"value": "USD",
+											"type": "text"
+										},
+										{
+											"key": "currency_symbol",
+											"value": "$",
+											"type": "text"
+										},
+										{
+											"key": "service_charge_below_3_miles_percent",
+											"value": "9",
+											"type": "text"
+										},
+										{
+											"key": "service_charge_above_3_miles_percent",
+											"value": "20",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/settings",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"settings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show all settings",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/settings",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"settings"
 									]
 								}
 							},
@@ -6616,6 +6869,38 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "Settings",
+					"item": [
+						{
+							"name": "show settings data",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/settings",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"settings"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		},
@@ -7991,6 +8276,101 @@
 											"key": "search_keyword",
 											"value": null
 										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "POS products",
+					"item": [
+						{
+							"name": "show all pos product list",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "vendor-store-id",
+										"value": "10",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/vendor/pos-products?pagination_limit&search_keyword",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vendor",
+										"pos-products"
+									],
+									"query": [
+										{
+											"key": "pagination_limit",
+											"value": null
+										},
+										{
+											"key": "search_keyword",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Settings",
+					"item": [
+						{
+							"name": "show settings data",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/vendor/settings",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vendor",
+										"settings"
 									]
 								}
 							},
