@@ -4807,13 +4807,8 @@
 											"type": "text"
 										},
 										{
-											"key": "service_charge_below_3_miles_percent",
+											"key": "service_charge_percent",
 											"value": "9",
-											"type": "text"
-										},
-										{
-											"key": "service_charge_above_3_miles_percent",
-											"value": "20",
 											"type": "text"
 										}
 									]
@@ -5353,7 +5348,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/api/sub-category/{slug}",
+									"raw": "{{url}}/api/sub-category/{slug}?search_keyword&brands&min_price&max_price&sort_by",
 									"host": [
 										"{{url}}"
 									],
@@ -5361,6 +5356,28 @@
 										"api",
 										"sub-category",
 										"{slug}"
+									],
+									"query": [
+										{
+											"key": "search_keyword",
+											"value": null
+										},
+										{
+											"key": "brands",
+											"value": null
+										},
+										{
+											"key": "min_price",
+											"value": null
+										},
+										{
+											"key": "max_price",
+											"value": null
+										},
+										{
+											"key": "sort_by",
+											"value": null
+										}
 									]
 								}
 							},
@@ -5493,13 +5510,35 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/api/products",
+									"raw": "{{url}}/api/products?pagination_limit&search_keyword&sub_category_id&brand_id&limit",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
 										"products"
+									],
+									"query": [
+										{
+											"key": "pagination_limit",
+											"value": null
+										},
+										{
+											"key": "search_keyword",
+											"value": null
+										},
+										{
+											"key": "sub_category_id",
+											"value": null
+										},
+										{
+											"key": "brand_id",
+											"value": null
+										},
+										{
+											"key": "limit",
+											"value": null
+										}
 									]
 								}
 							},
@@ -5585,6 +5624,42 @@
 											"key": "max_price",
 											"value": "1000"
 										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show product related products",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/products/{id}/related",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"products",
+										"{id}",
+										"related"
 									]
 								}
 							},
@@ -6895,6 +6970,80 @@
 									"path": [
 										"api",
 										"settings"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Product Badges",
+					"item": [
+						{
+							"name": "show all product badges products",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/product-badges-products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"product-badges-products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show single product badge product",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/product-badges-products/{slug}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"product-badges-products",
+										"{slug}"
 									]
 								}
 							},
