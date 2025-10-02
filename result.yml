@@ -89,6 +89,7 @@ tags:
   - name: Vendor > Settings
   - name: Driver
   - name: Driver > Driver
+  - name: Driver > Auth
 paths:
   /api/admin/login:
     post:
@@ -3118,6 +3119,16 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/popular-category:
+    get:
+      tags:
+        - Customer > Sub Category
+      summary: show all popular category
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/sub-category:
     get:
       tags:
@@ -3174,16 +3185,6 @@ paths:
           schema:
             type: string
           required: true
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/popular-category:
-    get:
-      tags:
-        - Customer > Sub Category
-      summary: show all popular category
       responses:
         '200':
           description: Successful response
@@ -4057,7 +4058,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/payments/verify/{payment_intent}:
+  /api/payments/verify/pi_3SCjSLGiVoOWnnHN1LjlG00Z:
     post:
       tags:
         - Customer > Order
@@ -4075,16 +4076,65 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: payment_intent
-          in: path
-          schema:
-            type: string
-          required: true
       responses:
         '200':
-          description: Successful response
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.3.14
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Mon, 29 Sep 2025 16:13:08 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Vary:
+              schema:
+                type: string
+                example: Origin
           content:
-            application/json: {}
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "id": "pi_3SCjSLGiVoOWnnHN1LjlG00Z",
+                    "status": "requires_payment_method",
+                    "amount": 121,
+                    "currency": "usd",
+                    "charges": [],
+                    "order_id": null,
+                    "order_status": null,
+                    "last_error": {
+                        "message": "Your card does not support this type of purchase.",
+                        "code": "card_declined",
+                        "declineCode": "transaction_not_allowed"
+                    },
+                    "suggest_alternatives": true,
+                    "available_methods": [
+                        "google_pay",
+                        "apple_pay",
+                        "link",
+                        "cashapp",
+                        "amazon_pay"
+                    ]
+                }
   /api/vendor-stores:
     get:
       tags:
@@ -5170,6 +5220,52 @@ paths:
                 token:
                   type: integer
                   example: '54057'
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/driver/profile:
+    get:
+      tags:
+        - Driver > Driver
+      summary: show driver details
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/driver/login:
+    post:
+      tags:
+        - Driver > Auth
+      summary: driver login
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: niteshhamal720@gmail.com
+                password:
+                  type: string
+                  example: Password
       parameters:
         - name: Accept
           in: header

@@ -5407,6 +5407,24 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "show all popular category",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/popular-category",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"popular-category"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -6767,7 +6785,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/payments/verify/{payment_intent}",
+									"raw": "{{url}}/api/payments/verify/pi_3SCjSLGiVoOWnnHN1LjlG00Z",
 									"host": [
 										"{{url}}"
 									],
@@ -6775,11 +6793,76 @@
 										"api",
 										"payments",
 										"verify",
-										"{payment_intent}"
+										"pi_3SCjSLGiVoOWnnHN1LjlG00Z"
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "verify payment",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/payments/verify/pi_3SCjSLGiVoOWnnHN1LjlG00Z",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"payments",
+												"verify",
+												"pi_3SCjSLGiVoOWnnHN1LjlG00Z"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.3.14"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 29 Sep 2025 16:13:08 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"pi_3SCjSLGiVoOWnnHN1LjlG00Z\",\n    \"status\": \"requires_payment_method\",\n    \"amount\": 121,\n    \"currency\": \"usd\",\n    \"charges\": [],\n    \"order_id\": null,\n    \"order_status\": null,\n    \"last_error\": {\n        \"message\": \"Your card does not support this type of purchase.\",\n        \"code\": \"card_declined\",\n        \"declineCode\": \"transaction_not_allowed\"\n    },\n    \"suggest_alternatives\": true,\n    \"available_methods\": [\n        \"google_pay\",\n        \"apple_pay\",\n        \"link\",\n        \"cashapp\",\n        \"amazon_pay\"\n    ]\n}"
+								}
+							]
 						}
 					]
 				},
@@ -8811,6 +8894,119 @@
 										"api",
 										"driver",
 										"verify-account"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show driver details",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "niteshhamal720@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/driver/profile",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"driver",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "driver login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const response = pm.response.json()",
+											"pm.environment.set('token', response.data.access_token)",
+											"pm.environment.set('refresh_token', response.data.refresh_token)"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "niteshhamal720@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/driver/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"driver",
+										"login"
 									]
 								}
 							},
